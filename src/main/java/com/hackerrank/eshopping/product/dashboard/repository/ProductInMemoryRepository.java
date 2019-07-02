@@ -1,6 +1,7 @@
 package com.hackerrank.eshopping.product.dashboard.repository;
 
 import com.hackerrank.eshopping.product.dashboard.business.mapper.ProductMapperForModelEntity;
+import com.hackerrank.eshopping.product.dashboard.business.validation.ValidationStatus;
 import com.hackerrank.eshopping.product.dashboard.model.Product;
 import com.hackerrank.eshopping.product.dashboard.model.ProductFilterParameters;
 import com.hackerrank.eshopping.product.dashboard.model.ProductUpdate;
@@ -9,10 +10,10 @@ import com.hackerrank.eshopping.product.dashboard.repository.entity.ProductEntit
 import com.hackerrank.eshopping.product.dashboard.repository.entity.filter.ProductEntityFiltering;
 import com.hackerrank.eshopping.product.dashboard.repository.entity.sorter.ProductEntitySorter;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ProductInMemoryRepository implements ProductRepositoryContract {
@@ -48,18 +49,21 @@ public class ProductInMemoryRepository implements ProductRepositoryContract {
 	}
 
 	@Override
-	public void add(Product product) {
+	public Product add(Product product) {
 		Long productId = product.getId();
 		ProductEntity productEntity = productMapper.toEntity(product);
+		prePersist(productEntity);
 		database.put(productId, productEntity);
+		return productMapper.toModel(productEntity);
 	}
 
 	@Override
 	public Product update(ProductUpdate productUpdate) {
 		Long productId = productUpdate.getId();
-		// FIXME [NullPointerException] Even we know the entity already exists it is a must to throw exception if entity is missing
 		ProductEntity productEntity = database.get(productId);
+		validateEntityIsValidOrThrow(productEntity);
 		updateFieldsIfPresent(productUpdate, productEntity);
+		preUpdate(productEntity);
 		database.put(productId, productEntity);
 		return productMapper.toModel(productEntity);
 	}
@@ -75,15 +79,20 @@ public class ProductInMemoryRepository implements ProductRepositoryContract {
 		return database.containsKey(productId);
 	}
 
-	private void updateFieldsIfPresent(ProductUpdate productUpdate, ProductEntity productEntity) {
-		if (Objects.nonNull(productUpdate.getRetailPrice())) {
-			productEntity.setRetailPrice(productUpdate.getRetailPrice());
-		}
-		if (Objects.nonNull(productUpdate.getDiscountedPrice())) {
-			productEntity.setDiscountedPrice(productUpdate.getDiscountedPrice());
-		}
-		if (Objects.nonNull(productUpdate.getAvailability())) {
-			productEntity.setAvailability(productUpdate.getAvailability());
+	private void prePersist(ProductEntity productEntity) {
+		LocalDateTime now = now();
+		productEntity.setCreatedOn(now);
+		productEntity.setModifiedAt(now);
+	}
+
+	private void preUpdate(ProductEntity productEntity) {
+		LocalDateTime now = now();
+		productEntity.setModifiedAt(now);
+	}
+
+	private void validateEntityIsValidOrThrow(ProductEntity entity) {
+		if (entity == null) {
+			ValidationStatus.PRODUCT_DOES_NOT_EXIST._throw();
 		}
 	}
 

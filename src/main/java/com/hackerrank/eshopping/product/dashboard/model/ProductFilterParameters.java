@@ -1,5 +1,7 @@
 package com.hackerrank.eshopping.product.dashboard.model;
 
+import java.util.Objects;
+
 public class ProductFilterParameters {
 
 	private String category;
@@ -21,4 +23,24 @@ public class ProductFilterParameters {
 		this.availability = availability;
 	}
 
+	public boolean hasNoFilters() {
+		return Objects.isNull(getCategory()) && Objects.isNull(getCategory());
+	}
+
+	public boolean hasOnlyCategory() {
+		return hasCategory() && Objects.isNull(getAvailability());
+	}
+
+	public boolean hasCategory() {
+		return Objects.nonNull(getCategory());
+	}
+
+	public boolean hasAvailability() {
+		return Objects.nonNull(getAvailability());
+	}
+
+	public boolean hasOnlyCategoryAndAvailability() {
+		return hasCategory() && hasAvailability();
+	}
+	
 }

@@ -3,7 +3,13 @@ package com.hackerrank.eshopping.product.dashboard.api.controller;
 import com.hackerrank.test.utility.Order;
 import com.hackerrank.test.utility.OrderedTestRunner;
 import com.hackerrank.test.utility.ResultMatcher;
+
 import static org.junit.Assert.assertTrue;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
@@ -15,10 +21,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.rules.SpringClassRule;
 import org.springframework.test.context.junit4.rules.SpringMethodRule;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(OrderedTestRunner.class)
 @SpringBootTest
@@ -574,19 +576,38 @@ public class ProductsControllerTest {
          *
          * The request body is:
          * {
+         *     "retail_price": 325.45
+         * }
+         */
+        String json = "{\"retail_price\": 325.45}";
+
+        /**
+         * The response body is:
+         * {
+         *     "id": 6,
+         *     "name": "Shawl",
+         *     "category": "Accessories",
          *     "retail_price": 325.45,
          *     "discounted_price": 260.36,
          *     "availability": true
          * }
          */
-        String json = "{\"retail_price\": 325.45, \"discounted_price\": 260.36, \"availability\": true}";
-
-        mockMvc.perform(
-                put("/products/6")
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .content(json)
-        )
-                .andExpect(status().isOk());
+        String res = "{\"id\": 6, \"name\": \"Shawl\", \"category\": \"Accessories\", \"retail_price\": 325.45, \"discounted_price\": 260.36, \"availability\": true}";
+       
+        assertTrue(
+               ResultMatcher.matchJson(
+                       mockMvc.perform(
+                    		   		put("/products/6")
+                               		.contentType(MediaType.APPLICATION_JSON_UTF8)
+                               		.content(json))
+                               .andExpect(status().isOk())
+                               .andReturn()
+                               .getResponse()
+                               .getContentAsString(),
+                       res,
+                       true
+               )
+        );
     }
 
     /**
@@ -598,25 +619,44 @@ public class ProductsControllerTest {
     @Test
     @Order(4)
     public void updateProductDiscountPrice() throws Exception {
-        /**
+    	/**
          *
          * Update discount price of a product with id 10
          *
          * The request body is:
          * {
+         *     "discounted_price": 227.2
+         * }
+         */
+        String json = "{\"discounted_price\": 227.2}";
+
+        /**
+         * The response body is:
+         * {
+         *     "id": 10,
+         *     "name": "Cufflinks",
+         *     "category": "Accessories",
          *     "retail_price": 284.0,
          *     "discounted_price": 227.2,
          *     "availability": true
          * }
          */
-        String json = "{\"retail_price\": 284.0, \"discounted_price\": 227.2, \"availability\": true}";
-
-        mockMvc.perform(
-                put("/products/10")
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .content(json)
-        )
-                .andExpect(status().isOk());
+        String res = "{\"id\": 10, \"name\": \"Cufflinks\", \"category\": \"Accessories\", \"retail_price\": 284.0, \"discounted_price\": 227.2, \"availability\": true}";
+       
+        assertTrue(
+               ResultMatcher.matchJson(
+                       mockMvc.perform(
+                    		   		put("/products/10")
+                               		.contentType(MediaType.APPLICATION_JSON_UTF8)
+                               		.content(json))
+                               .andExpect(status().isOk())
+                               .andReturn()
+                               .getResponse()
+                               .getContentAsString(),
+                       res,
+                       true
+               )
+        );
     }
 
     /**
@@ -634,19 +674,38 @@ public class ProductsControllerTest {
          *
          * The request body is:
          * {
+         *     "availability": false
+         * }
+         */
+        String json = "{\"availability\": false}";
+
+        /**
+         * The response body is:
+         * {
+         *     "id": 2,
+         *     "name": "Shoes",
+         *     "category": "Footwear",
          *     "retail_price": 150.0,
          *     "discounted_price": 123.0,
          *     "availability": false
          * }
          */
-        String json = "{\"retail_price\": 150.0, \"discounted_price\": 123.0, \"availability\": false}";
-
-        mockMvc.perform(
-                put("/products/2")
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .content(json)
-        )
-                .andExpect(status().isOk());
+        String res = "{\"id\": 2, \"name\": \"Shoes\", \"category\": \"Footwear\", \"retail_price\": 150.0, \"discounted_price\": 123.0, \"availability\": false}";
+        
+        assertTrue(
+                ResultMatcher.matchJson(
+                        mockMvc.perform(
+                     		   		put("/products/2")
+                                		.contentType(MediaType.APPLICATION_JSON_UTF8)
+                                		.content(json))
+                                .andExpect(status().isOk())
+                                .andReturn()
+                                .getResponse()
+                                .getContentAsString(),
+                        res,
+                        true
+                )
+        );
     }
 
     /**
@@ -665,18 +724,38 @@ public class ProductsControllerTest {
          * The request body is:
          * {
          *     "retail_price": 350.0,
-         *     "discounted_price": 283.5,
-         *     "availability": true
+         *     "discounted_price": 283.5
          * }
          */
         String json = "{\"retail_price\": 350.0, \"discounted_price\": 283.5, \"availability\": true}";
 
-        mockMvc.perform(
-                put("/products/12")
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .content(json)
-        )
-                .andExpect(status().isOk());
+        /**
+         * The response body is:
+         * {
+         *     "id": 12,
+         *     "name": "Poncho",
+         *     "category": "Accessories",
+         *     "retail_price": 350.0,
+         *     "discounted_price": 283.5,
+         *     "availability": true
+         * }
+         */
+        String res = "{\"id\": 12, \"name\": \"Poncho\", \"category\": \"Accessories\", \"retail_price\": 350.0, \"discounted_price\": 283.5, \"availability\": true}";
+       
+        assertTrue(
+                ResultMatcher.matchJson(
+                        mockMvc.perform(
+                     		   		put("/products/12")
+                                		.contentType(MediaType.APPLICATION_JSON_UTF8)
+                                		.content(json))
+                                .andExpect(status().isOk())
+                                .andReturn()
+                                .getResponse()
+                                .getContentAsString(),
+                        res,
+                        true
+                )
+        );
     }
 
     /**
@@ -701,12 +780,33 @@ public class ProductsControllerTest {
          */
         String json = "{\"retail_price\": 125.0, \"discounted_price\": 100.0, \"availability\": false}";
 
-        mockMvc.perform(
-                put("/products/19")
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .content(json)
-        )
-                .andExpect(status().isOk());
+        /**
+         * The response body is:
+         * {
+         *     "id": 19,
+         *     "name": "Suit",
+         *     "category": "Full Body Outfits",
+         *     "retail_price": 125.0,
+         *     "discounted_price": 100.0,
+         *     "availability": false
+         * }
+         */
+        String res = "{\"id\": 19, \"name\": \"Suit\", \"category\": \"Full Body Outfits\", \"retail_price\": 125.0, \"discounted_price\": 100.0, \"availability\": false}";
+       
+        assertTrue(
+                ResultMatcher.matchJson(
+                        mockMvc.perform(
+                     		   		put("/products/19")
+                                		.contentType(MediaType.APPLICATION_JSON_UTF8)
+                                		.content(json))
+                                .andExpect(status().isOk())
+                                .andReturn()
+                                .getResponse()
+                                .getContentAsString(),
+                        res,
+                        true
+                )
+        );
     }
 
     /**
@@ -724,19 +824,39 @@ public class ProductsControllerTest {
          *
          * The request body is:
          * {
-         *     "retail_price": 250.0,
          *     "discounted_price": 200.0,
          *     "availability": false
          * }
          */
-        String json = "{\"retail_price\": 250.0, \"discounted_price\": 200.0, \"availability\": false}";
+        String json = "{\"discounted_price\": 200.0, \"availability\": false}";
 
-        mockMvc.perform(
-                put("/products/20")
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .content(json)
-        )
-                .andExpect(status().isOk());
+        /**
+         * The response body is:
+         * {
+         *     "id": 20,
+         *     "name": "Catsuit",
+         *     "category": "Full Body Outfits",
+         *     "retail_price": 158.0,
+         *     "discounted_price": 200.0,
+         *     "availability": false
+         * }
+         */
+        String res = "{\"id\": 20, \"name\": \"Catsuit\", \"category\": \"Full Body Outfits\", \"retail_price\": 158.0, \"discounted_price\": 200.0, \"availability\": false}";
+
+        assertTrue(
+                ResultMatcher.matchJson(
+                        mockMvc.perform(
+                     		   		put("/products/20")
+                                		.contentType(MediaType.APPLICATION_JSON_UTF8)
+                                		.content(json))
+                                .andExpect(status().isOk())
+                                .andReturn()
+                                .getResponse()
+                                .getContentAsString(),
+                        res,
+                        true
+                )
+        );
     }
 
     /**
@@ -761,12 +881,33 @@ public class ProductsControllerTest {
          */
         String json = "{\"retail_price\": 500.0, \"discounted_price\": 450.0, \"availability\": false}";
 
-        mockMvc.perform(
-                put("/products/13")
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .content(json)
-        )
-                .andExpect(status().isOk());
+         /**
+         * The response body is:
+         * {
+         *     "id": 13,
+         *     "name": "Cummerbund",
+         *     "category": "Accessories",
+         *     "retail_price": 500.0,
+         *     "discounted_price": 450.0,
+         *     "availability": false
+         * }
+         */
+        String res = "{\"id\": 13, \"name\": \"Cummerbund\", \"category\": \"Accessories\", \"retail_price\": 500.0, \"discounted_price\": 450.0, \"availability\": false}";
+       
+        assertTrue(
+                ResultMatcher.matchJson(
+                        mockMvc.perform(
+                     		   		put("/products/13")
+                                		.contentType(MediaType.APPLICATION_JSON_UTF8)
+                                		.content(json))
+                                .andExpect(status().isOk())
+                                .andReturn()
+                                .getResponse()
+                                .getContentAsString(),
+                        res,
+                        true
+                )
+        );
     }
 
     /**
@@ -795,7 +936,7 @@ public class ProductsControllerTest {
                 put("/products/25")
                         .contentType(MediaType.APPLICATION_JSON_UTF8)
                         .content(json)
-        )
+        		)
                 .andExpect(status().isBadRequest());
     }
 
@@ -1059,14 +1200,6 @@ public class ProductsControllerTest {
          *         "availability": false
          *     },
          *     {
-         *         "id": 20,
-         *         "name": "Catsuit",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 250.0,
-         *         "discounted_price": 200.0,
-         *         "availability": false
-         *     },
-         *     {
          *         "id": 21,
          *         "name": "Dungarees",
          *         "category": "Full Body Outfits",
@@ -1081,10 +1214,18 @@ public class ProductsControllerTest {
          *         "retail_price": 471.0,
          *         "discounted_price": 423.9,
          *         "availability": false
+         *     },
+         *     {
+         *         "id": 20,
+         *         "name": "Catsuit",
+         *         "category": "Full Body Outfits",
+         *         "retail_price": 158.0,
+         *         "discounted_price": 200.0,
+         *         "availability": false
          *     }
          * ]
          */
-        res = "[{\"id\": 19, \"name\": \"Suit\", \"category\": \"Full Body Outfits\", \"retail_price\": 125.0, \"discounted_price\": 100.0, \"availability\": false}, {\"id\": 20, \"name\": \"Catsuit\", \"category\": \"Full Body Outfits\", \"retail_price\": 250.0, \"discounted_price\": 200.0, \"availability\": false}, {\"id\": 21, \"name\": \"Dungarees\", \"category\": \"Full Body Outfits\", \"retail_price\": 437.0, \"discounted_price\": 362.71, \"availability\": false}, {\"id\": 16, \"name\": \"Tracksuit\", \"category\": \"Full Body Outfits\", \"retail_price\": 471.0, \"discounted_price\": 423.9, \"availability\": false}]";
+        res = "[{\"id\": 19, \"name\": \"Suit\", \"category\": \"Full Body Outfits\", \"retail_price\": 125.0, \"discounted_price\": 100.0, \"availability\": false}, {\"id\": 21, \"name\": \"Dungarees\", \"category\": \"Full Body Outfits\", \"retail_price\": 437.0, \"discounted_price\": 362.71, \"availability\": false}, {\"id\": 16, \"name\": \"Tracksuit\", \"category\": \"Full Body Outfits\", \"retail_price\": 471.0, \"discounted_price\": 423.9, \"availability\": false}, {\"id\": 20, \"name\": \"Catsuit\", \"category\": \"Full Body Outfits\", \"retail_price\": 158.0, \"discounted_price\": 200.0, \"availability\": false}]";
 
         assertTrue(
                 ResultMatcher.matchJsonArray(
@@ -1301,7 +1442,7 @@ public class ProductsControllerTest {
          *         "id": 20,
          *         "name": "Catsuit",
          *         "category": "Full Body Outfits",
-         *         "retail_price": 250.0,
+         *         "retail_price": 158.0,
          *         "discounted_price": 200.0,
          *         "availability": false
          *     },
@@ -1315,7 +1456,7 @@ public class ProductsControllerTest {
          *     }
          * ]
          */
-        String res = "[{\"id\": 1, \"name\": \"Dressing Gown\", \"category\": \"Full Body Outfits\", \"retail_price\": 303.0, \"discounted_price\": 251.49, \"availability\": true}, {\"id\": 2, \"name\": \"Shoes\", \"category\": \"Footwear\", \"retail_price\": 150.0, \"discounted_price\": 123.0, \"availability\": false}, {\"id\": 3, \"name\": \"Nightgown\", \"category\": \"Full Body Outfits\", \"retail_price\": 307.0, \"discounted_price\": 254.81, \"availability\": true}, {\"id\": 4, \"name\": \"Boots\", \"category\": \"Footwear\", \"retail_price\": 162.0, \"discounted_price\": 132.84, \"availability\": true}, {\"id\": 5, \"name\": \"Ball Gown\", \"category\": \"Full Body Outfits\", \"retail_price\": 337.0, \"discounted_price\": 272.97, \"availability\": true}, {\"id\": 6, \"name\": \"Shawl\", \"category\": \"Accessories\", \"retail_price\": 325.45, \"discounted_price\": 260.36, \"availability\": true}, {\"id\": 7, \"name\": \"Belt\", \"category\": \"Accessories\", \"retail_price\": 471.0, \"discounted_price\": 419.19, \"availability\": true}, {\"id\": 8, \"name\": \"Kaftan\", \"category\": \"Accessories\", \"retail_price\": 237.0, \"discounted_price\": 215.67, \"availability\": true}, {\"id\": 9, \"name\": \"Overalls\", \"category\": \"Full Body Outfits\", \"retail_price\": 374.0, \"discounted_price\": 321.64, \"availability\": true}, {\"id\": 10, \"name\": \"Cufflinks\", \"category\": \"Accessories\", \"retail_price\": 284.0, \"discounted_price\": 227.2, \"availability\": true}, {\"id\": 11, \"name\": \"Cargos\", \"category\": \"Bottoms\", \"retail_price\": 498.0, \"discounted_price\": 428.28, \"availability\": true}, {\"id\": 12, \"name\": \"Poncho\", \"category\": \"Accessories\", \"retail_price\": 350.0, \"discounted_price\": 283.5, \"availability\": true}, {\"id\": 13, \"name\": \"Cummerbund\", \"category\": \"Accessories\", \"retail_price\": 500.0, \"discounted_price\": 450.0, \"availability\": false}, {\"id\": 14, \"name\": \"Dress\", \"category\": \"Full Body Outfits\", \"retail_price\": 175.0, \"discounted_price\": 140.0, \"availability\": true}, {\"id\": 15, \"name\": \"Trainers\", \"category\": \"Footwear\", \"retail_price\": 228.0, \"discounted_price\": 184.68, \"availability\": true}, {\"id\": 16, \"name\": \"Tracksuit\", \"category\": \"Full Body Outfits\", \"retail_price\": 471.0, \"discounted_price\": 423.9, \"availability\": false}, {\"id\": 17, \"name\": \"Tailcoat\", \"category\": \"Full Body Outfits\", \"retail_price\": 307.0, \"discounted_price\": 254.81, \"availability\": true}, {\"id\": 18, \"name\": \"Vest\", \"category\": \"Tops\", \"retail_price\": 446.0, \"discounted_price\": 392.48, \"availability\": true}, {\"id\": 19, \"name\": \"Suit\", \"category\": \"Full Body Outfits\", \"retail_price\": 125.0, \"discounted_price\": 100.0, \"availability\": false}, {\"id\": 20, \"name\": \"Catsuit\", \"category\": \"Full Body Outfits\", \"retail_price\": 250.0, \"discounted_price\": 200.0, \"availability\": false}, {\"id\": 21, \"name\": \"Dungarees\", \"category\": \"Full Body Outfits\", \"retail_price\": 437.0, \"discounted_price\": 362.71, \"availability\": false}]";
+        String res = "[{\"id\": 1, \"name\": \"Dressing Gown\", \"category\": \"Full Body Outfits\", \"retail_price\": 303.0, \"discounted_price\": 251.49, \"availability\": true}, {\"id\": 2, \"name\": \"Shoes\", \"category\": \"Footwear\", \"retail_price\": 150.0, \"discounted_price\": 123.0, \"availability\": false}, {\"id\": 3, \"name\": \"Nightgown\", \"category\": \"Full Body Outfits\", \"retail_price\": 307.0, \"discounted_price\": 254.81, \"availability\": true}, {\"id\": 4, \"name\": \"Boots\", \"category\": \"Footwear\", \"retail_price\": 162.0, \"discounted_price\": 132.84, \"availability\": true}, {\"id\": 5, \"name\": \"Ball Gown\", \"category\": \"Full Body Outfits\", \"retail_price\": 337.0, \"discounted_price\": 272.97, \"availability\": true}, {\"id\": 6, \"name\": \"Shawl\", \"category\": \"Accessories\", \"retail_price\": 325.45, \"discounted_price\": 260.36, \"availability\": true}, {\"id\": 7, \"name\": \"Belt\", \"category\": \"Accessories\", \"retail_price\": 471.0, \"discounted_price\": 419.19, \"availability\": true}, {\"id\": 8, \"name\": \"Kaftan\", \"category\": \"Accessories\", \"retail_price\": 237.0, \"discounted_price\": 215.67, \"availability\": true}, {\"id\": 9, \"name\": \"Overalls\", \"category\": \"Full Body Outfits\", \"retail_price\": 374.0, \"discounted_price\": 321.64, \"availability\": true}, {\"id\": 10, \"name\": \"Cufflinks\", \"category\": \"Accessories\", \"retail_price\": 284.0, \"discounted_price\": 227.2, \"availability\": true}, {\"id\": 11, \"name\": \"Cargos\", \"category\": \"Bottoms\", \"retail_price\": 498.0, \"discounted_price\": 428.28, \"availability\": true}, {\"id\": 12, \"name\": \"Poncho\", \"category\": \"Accessories\", \"retail_price\": 350.0, \"discounted_price\": 283.5, \"availability\": true}, {\"id\": 13, \"name\": \"Cummerbund\", \"category\": \"Accessories\", \"retail_price\": 500.0, \"discounted_price\": 450.0, \"availability\": false}, {\"id\": 14, \"name\": \"Dress\", \"category\": \"Full Body Outfits\", \"retail_price\": 175.0, \"discounted_price\": 140.0, \"availability\": true}, {\"id\": 15, \"name\": \"Trainers\", \"category\": \"Footwear\", \"retail_price\": 228.0, \"discounted_price\": 184.68, \"availability\": true}, {\"id\": 16, \"name\": \"Tracksuit\", \"category\": \"Full Body Outfits\", \"retail_price\": 471.0, \"discounted_price\": 423.9, \"availability\": false}, {\"id\": 17, \"name\": \"Tailcoat\", \"category\": \"Full Body Outfits\", \"retail_price\": 307.0, \"discounted_price\": 254.81, \"availability\": true}, {\"id\": 18, \"name\": \"Vest\", \"category\": \"Tops\", \"retail_price\": 446.0, \"discounted_price\": 392.48, \"availability\": true}, {\"id\": 19, \"name\": \"Suit\", \"category\": \"Full Body Outfits\", \"retail_price\": 125.0, \"discounted_price\": 100.0, \"availability\": false}, {\"id\": 20, \"name\": \"Catsuit\", \"category\": \"Full Body Outfits\", \"retail_price\": 158.0, \"discounted_price\": 200.0, \"availability\": false}, {\"id\": 21, \"name\": \"Dungarees\", \"category\": \"Full Body Outfits\", \"retail_price\": 437.0, \"discounted_price\": 362.71, \"availability\": false}]";
 
         assertTrue(
                 ResultMatcher.matchJsonArray(

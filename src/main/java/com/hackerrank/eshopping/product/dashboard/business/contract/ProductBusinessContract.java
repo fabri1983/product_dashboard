@@ -12,7 +12,7 @@ public interface ProductBusinessContract {
 
 	Product findById(Long productId);
 	
-	void add(Product product);
+	Product add(Product product);
 
 	Product update(ProductUpdate productUpdate);
 

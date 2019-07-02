@@ -80,3 +80,8 @@ Make sure that:
 - You configure the models correctly, so serialization and deserialization work as expected.
 - The field names in the response JSON and expected response JSON must exactly match. 
 For example, sending retailprice, retail-price, or retailPrice in the response when retail_price is expected is a wrong response. 
+
+
+## IDE Considerations
+This project uses **MapStruct Bean Mapper**. So you need to install a plugin in your IDE to properly generate code for the mappers you declare.
+See http://mapstruct.org/documentation/ide-support/.

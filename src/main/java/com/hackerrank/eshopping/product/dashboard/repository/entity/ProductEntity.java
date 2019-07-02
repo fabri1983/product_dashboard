@@ -1,42 +1,32 @@
 package com.hackerrank.eshopping.product.dashboard.repository.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.Formula;
 
 @Entity( name = "Product" )
-@Table( name = "tbl_product")
-public class ProductEntity {
+@Table( name = "tbl_product" )
+public class ProductEntity extends BaseEntity {
 
-	@Id
-	private Long id;
+	private static final long serialVersionUID = 1L;
+	
+	@Column( nullable = false )
 	private String name;
+	@Column( nullable = false )
 	private String category;
+	@Column( nullable = false )
 	private Double retailPrice;
+	@Column( nullable = false )
 	private Double discountedPrice;
+	@Column( nullable = false )
 	private Boolean availability;
-
+	@Formula( "ROUND( ((retailPrice - discountedPrice) / retailPrice) * 100 )" )
+	private Integer discountedPercentage;
+	
 	public ProductEntity() {
-	}
-
-	public static ProductEntity from(Long id, String name, String category, Double retailPrice, Double discountedPrice,
-			Boolean availability) {
-		ProductEntity newObj = new ProductEntity();
-		newObj.id = id;
-		newObj.name = name;
-		newObj.category = category;
-		newObj.retailPrice = retailPrice;
-		newObj.discountedPrice = discountedPrice;
-		newObj.availability = availability;
-		return newObj;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -79,14 +69,18 @@ public class ProductEntity {
 		this.availability = availability;
 	}
 
+	@Transient
+	public Integer getDiscountedPercentage() {
+		return discountedPercentage;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		int result = super.hashCode();
 		result = prime * result + ((availability == null) ? 0 : availability.hashCode());
 		result = prime * result + ((category == null) ? 0 : category.hashCode());
 		result = prime * result + ((discountedPrice == null) ? 0 : discountedPrice.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((retailPrice == null) ? 0 : retailPrice.hashCode());
 		return result;
@@ -96,7 +90,7 @@ public class ProductEntity {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
@@ -115,11 +109,6 @@ public class ProductEntity {
 			if (other.discountedPrice != null)
 				return false;
 		} else if (!discountedPrice.equals(other.discountedPrice))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
 			return false;
 		if (name == null) {
 			if (other.name != null)

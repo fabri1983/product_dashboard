@@ -2,8 +2,8 @@ package com.hackerrank.eshopping.product.dashboard.business;
 
 import com.hackerrank.eshopping.product.dashboard.business.contract.ProductBusinessContract;
 import com.hackerrank.eshopping.product.dashboard.business.validation.ValidationStatus;
-import com.hackerrank.eshopping.product.dashboard.model.ProductFilterParameters;
 import com.hackerrank.eshopping.product.dashboard.model.Product;
+import com.hackerrank.eshopping.product.dashboard.model.ProductFilterParameters;
 import com.hackerrank.eshopping.product.dashboard.model.ProductUpdate;
 import com.hackerrank.eshopping.product.dashboard.repository.contract.ProductRepositoryContract;
 
@@ -31,9 +31,10 @@ public class ProductBusiness implements ProductBusinessContract {
 	}
 
 	@Override
-	public void add(Product product) {
+	public Product add(Product product) {
 		productIdExistsThenThrow(product.getId());
-		productRepository.add(product);
+		Product newProduct = productRepository.add(product);
+		return newProduct;
 	}
 
 	@Override

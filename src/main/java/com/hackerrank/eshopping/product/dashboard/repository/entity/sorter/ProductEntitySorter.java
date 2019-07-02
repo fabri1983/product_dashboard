@@ -5,7 +5,6 @@ import com.hackerrank.eshopping.product.dashboard.repository.entity.ProductEntit
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 public class ProductEntitySorter implements EntitySorter<ProductEntity> {
 
@@ -29,11 +28,12 @@ public class ProductEntitySorter implements EntitySorter<ProductEntity> {
 		// chain different sorting algorithms according the existent parameters
 		ProductEntitySorterFactory sorter = ProductEntitySorterFactory.newDummy();
 		
-		if (hasNoFilters()) {
+		if (filterParameters.hasNoFilters()) {
 			sorter
+				// sort by product id in the ascendent order
 				.byId(SortingOrder.ASC);
 		}
-		else if (hasOnlyCategory()) {
+		else if (filterParameters.hasOnlyCategory()) {
 			sorter
 				// stock products (availability=true) must be listed before out of stock products (availability=false)
 				.byAvailability(SortingOrder.DESC)
@@ -42,7 +42,7 @@ public class ProductEntitySorter implements EntitySorter<ProductEntity> {
 				// products with same discounted price must be sorted by the ID in the ascending order
 				.byId(SortingOrder.ASC);
 		}
-		else if (hasOnlyCategoryAndAvailability()) {
+		else if (filterParameters.hasOnlyCategoryAndAvailability()) {
 			sorter
 				// product sorted by the discount percentage in the descending order
 				.byDiscountedPercentage(SortingOrder.DESC)
@@ -53,21 +53,6 @@ public class ProductEntitySorter implements EntitySorter<ProductEntity> {
 		}
 		
 		return sorter.sort(collection);
-	}
-	
-	private boolean hasNoFilters() {
-		return Objects.isNull(filterParameters.getCategory()) 
-				&& Objects.isNull(filterParameters.getCategory());
-	}
-
-	private boolean hasOnlyCategory() {
-		return Objects.nonNull(filterParameters.getCategory()) 
-				&& Objects.isNull(filterParameters.getAvailability());
-	}
-
-	private boolean hasOnlyCategoryAndAvailability() {
-		return Objects.nonNull(filterParameters.getCategory()) 
-				&& Objects.nonNull(filterParameters.getAvailability());
 	}
 
 }

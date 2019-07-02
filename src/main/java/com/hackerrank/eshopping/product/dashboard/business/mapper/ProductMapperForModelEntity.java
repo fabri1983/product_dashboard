@@ -11,8 +11,11 @@ import org.mapstruct.Mapper;
 public interface ProductMapperForModelEntity {
 
 	Product toModel(ProductEntity productEntity);
+	
 	List<Product> toModel(List<ProductEntity> productEntities);
+	
 	ProductEntity toEntity(Product product);
-    List<ProductEntity> toEntity(List<Product> products);
     
+	List<ProductEntity> toEntity(List<Product> products);
+	
 }

@@ -95,7 +95,7 @@ public class ProductsController {
 	@RequestMapping(
 			value = "/{product_id}",
 			method = RequestMethod.DELETE)
-	public ResponseEntity<?> update(
+	public ResponseEntity<?> delete(
 			@PathVariable("product_id") @NotNull Long productId) {
 		
 		ProductView productView = ProductView.from(productId);

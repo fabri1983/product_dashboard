@@ -37,10 +37,10 @@ public class ProductEntityFiltering implements EntityFiltering<ProductEntity> {
 		
 		boolean testResult = true;
 		
-		if (Objects.nonNull(filterParameters.getCategory())) {
+		if (filterParameters.hasCategory()) {
 			testResult &= satisfyCategory(p);
 		}
-		if (Objects.nonNull(filterParameters.getAvailability())) {
+		if (filterParameters.hasAvailability()) {
 			testResult &= satisfyAvailability(p);
 		}
 		

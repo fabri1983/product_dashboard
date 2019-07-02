@@ -8,11 +8,13 @@ import com.hackerrank.eshopping.product.dashboard.business.ProductBusiness;
 import com.hackerrank.eshopping.product.dashboard.business.contract.ProductBusinessContract;
 import com.hackerrank.eshopping.product.dashboard.business.mapper.ProductMapperForModelEntity;
 import com.hackerrank.eshopping.product.dashboard.business.mapper.ProductMapperForModelEntityImpl;
-import com.hackerrank.eshopping.product.dashboard.repository.ProductInMemoryRepository;
+import com.hackerrank.eshopping.product.dashboard.repository.ProductJpaRepository;
 import com.hackerrank.eshopping.product.dashboard.repository.contract.ProductRepositoryContract;
+import com.hackerrank.eshopping.product.dashboard.repository.dao.ProductDao;
 import com.hackerrank.eshopping.product.dashboard.service.ProductService;
 import com.hackerrank.eshopping.product.dashboard.service.contract.ProductServiceContract;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -45,15 +47,15 @@ public class ProductDashboardConfiguration {
 		return new ProductBusiness(productRepository);
 	}
 	
-	@Bean
-	public ProductRepositoryContract productRepository(ProductMapperForModelEntity productMapper) {
-		return new ProductInMemoryRepository(productMapper);
-	}
-	
 //	@Bean
-//	public ProductRepositoryContract productRepository(ProductMapperForModelEntity productMapper,
-//			@Autowired ProductDao productDao) {
-//		return new ProductJpaRepository(productDao, productMapper);
+//	public ProductRepositoryContract productRepository(ProductMapperForModelEntity productMapper) {
+//		return new ProductInMemoryRepository(productMapper);
 //	}
+	
+	@Bean
+	public ProductRepositoryContract productRepository(ProductMapperForModelEntity productMapper,
+			@Autowired ProductDao productDao) {
+		return new ProductJpaRepository(productDao, productMapper);
+	}
 	
 }

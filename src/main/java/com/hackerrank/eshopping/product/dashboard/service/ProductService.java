@@ -3,12 +3,12 @@ package com.hackerrank.eshopping.product.dashboard.service;
 import com.hackerrank.eshopping.product.dashboard.api.mapper.FilterParametersMapperForViewModel;
 import com.hackerrank.eshopping.product.dashboard.api.mapper.ProductMapperForViewModel;
 import com.hackerrank.eshopping.product.dashboard.business.contract.ProductBusinessContract;
-import com.hackerrank.eshopping.product.dashboard.model.ProductFilterParameters;
 import com.hackerrank.eshopping.product.dashboard.model.Product;
+import com.hackerrank.eshopping.product.dashboard.model.ProductFilterParameters;
 import com.hackerrank.eshopping.product.dashboard.model.ProductUpdate;
 import com.hackerrank.eshopping.product.dashboard.service.contract.ProductServiceContract;
-import com.hackerrank.eshopping.product.dashboard.view.ProductFilterParametersView;
 import com.hackerrank.eshopping.product.dashboard.view.ProductCreateView;
+import com.hackerrank.eshopping.product.dashboard.view.ProductFilterParametersView;
 import com.hackerrank.eshopping.product.dashboard.view.ProductUpdateView;
 import com.hackerrank.eshopping.product.dashboard.view.ProductView;
 
@@ -45,8 +45,8 @@ public class ProductService implements ProductServiceContract {
 	@Override
 	public ProductView add(ProductCreateView productCreateView) {
 		Product product = productMapper.toModel(productCreateView);
-		productBusiness.add(product);
-		ProductView productView = productMapper.toView(product);
+		Product newProduct = productBusiness.add(product);
+		ProductView productView = productMapper.toView(newProduct);
 		return productView;
 	}
 
