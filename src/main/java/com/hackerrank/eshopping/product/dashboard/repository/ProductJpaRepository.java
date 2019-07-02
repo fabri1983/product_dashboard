@@ -26,6 +26,9 @@ public class ProductJpaRepository implements ProductRepositoryContract {
 	public List<Product> findAll(ProductFilterParameters filterParameters) {
 		List<ProductEntity> entities = Collections.emptyList();
 		
+		// TODO [Maintainability] Encapsulate the conditions using a Strategy pattern 
+		// and use an executor selector to run throw those strategies and pick one. 
+		
 		if (filterParameters.hasNoFilters()) {
 			entities = productDao.findByOrderByIdAsc();
 //			entities = productDao.findAll(Sort.by(Direction.ASC, "id"));
