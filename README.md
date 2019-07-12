@@ -1,5 +1,9 @@
 # Product Dashboard - Spring Boot REST api
 
+[![Build Status](https://travis-ci.org/fabri1983/product_dashboard.svg?branch=master)](https://travis-ci.org/fabri1983/product_dashboard?branch=master)
+&nbsp;&nbsp;&nbsp;&nbsp;
+[![Coverage Status](https://coveralls.io/repos/github/fabri1983/product_dashboard/badge.svg)](https://coveralls.io/github/fabri1983/product_dashboard?branch=master)
+
 
 ## E-Shopping: Product Dashboard
 

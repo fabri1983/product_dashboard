@@ -12,7 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
+        <java.version>1.8</java.version> <!-- Spring Boot only -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <mapstruct.version>1.3.0.Final</mapstruct.version>
@@ -35,7 +35,7 @@
 			<version>${mapstruct.version}</version>
 		</dependency>
 
-		<!-- Java EE dependencies removed from module java.se since Java 9 and beyond -->
+		<!-- Java 9+: Java EE dependencies removed from module java.se -->
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
@@ -138,6 +138,16 @@
 							<version>${mapstruct.version}</version>
 						</path>
 					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eluder.coveralls</groupId>
+				<artifactId>coveralls-maven-plugin</artifactId>
+				<version>4.3.0</version>
+				<configuration>
+					<timestampFormat>EpochMillis</timestampFormat>
+					<!-- token provided by -D argument on .travis.yml from environment variable set up on Travis CI account -->
+					<repoToken></repoToken>
 				</configuration>
 			</plugin>
     	</plugins>
