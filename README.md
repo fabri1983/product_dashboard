@@ -7,6 +7,9 @@
 [![Code Climate](https://codeclimate.com/github/fabri1983/product_dashboard/badges/gpa.svg)](https://codeclimate.com/github/fabri1983/product_dashboard)
 
 
+This project uses JPA, Spring Profiles, and Spring Security with OAuth2 for JWT authorization when accessing web resources.
+
+ 
 ## E-Shopping: Product Dashboard
 
 In this challenge, you are part of team building product dashboard for internal usage. 
@@ -39,12 +42,12 @@ Each product is a JSON entry with the following keys:
 The REST API service should implement the following functionalities:
  
 - 1. Add a product: 
-	- The service should be able to add a product by the POST request at /products. 
+	- The service should be able to add a product by the POST request at /eshopping/products. 
 	- The product JSON is sent in the request body. 
 	- If a product with the same ID already exists then the HTTP response code should be 400; otherwise, the response code should be 201.
 
 - 2. Update a product by id: 
-The service should be able to update a product by the PUT request at /products/{product_id}. 
+The service should be able to update a product by the PUT request at /eshopping/products/{product_id}. 
 The product JSON sent in the request body is described by the following keys:
 	- retail_price: The updated retail price. The value may remain unchanged.
 	- discounted_price: The updated discounted price. The value may remain unchanged.
@@ -52,11 +55,11 @@ The product JSON sent in the request body is described by the following keys:
 If the product with the requested ID does not exist then the HTTP response code should be 400; otherwise, the response code should be 200.
 
 - 3. Return a product by id: 
-The service should be able to return the product by the given ID by the GET request at /products/{product_id}. 
+The service should be able to return the product by the given ID by the GET request at /eshopping/products/{product_id}. 
 If the product with the requested ID does not exist then the HTTP response code should be 404; otherwise, the response code should be 200.
 
 - 4. Return products by category: 
-The service should be able to return the JSON array of all the products by the given category by the GET request at /products?category={category}. 
+The service should be able to return the JSON array of all the products by the given category by the GET request at /eshopping/products?category={category}. 
 The HTTP response code should be 200. The JSON array should be sorted by the availability, in stock products must be listed before out of stock products. 
 The products with same availability status must be sorted by the discounted price in the ascending order. 
 Finally, the products with same discounted price must be sorted by the ID in the ascending order.
@@ -64,7 +67,7 @@ Finally, the products with same discounted price must be sorted by the ID in the
 
 - 5. Return products by category and availability: 
 The service should be able to return the JSON array of all the products by the given category and availability by the GET request 
-at /products?category={category}&availability={availability}. 
+at /eshopping/products?category={category}&availability={availability}. 
 The availability is described by 0 (false) and 1 (true). 
 The HTTP response code should be 200. 
 The JSON array should be sorted by the discount percentage in the descending order. 
@@ -74,7 +77,7 @@ The discount percentage is calculated as:
 	- Discount Percentage = ((Retail Price — Discounted Price) ⁄ Retail Price) * 100
 
 - 6. Return all products: 
-The service should be able to return the JSON array of all products by the GET request at /products. 
+The service should be able to return the JSON array of all products by the GET request at /eshopping/products. 
 The HTTP response code should be 200. The JSON array should be sorted by the ID in the ascending order.
 
 
@@ -86,6 +89,43 @@ Make sure that:
 - You configure the models correctly, so serialization and deserialization work as expected.
 - The field names in the response JSON and expected response JSON must exactly match. 
 For example, sending retailprice, retail-price, or retailPrice in the response when retail_price is expected is a wrong response. 
+
+
+## Generate an access token
+Use the following generic command to generate an access token:
+```bash
+curl <client-id>:<secret>@localhost:8080/eshopping/oauth/token -d grant_type=password -d username=<username> -d password=<plain-text-pass>
+```
+For instance:
+```bash
+for a user with a standard role
+curl product-dashboard-client-id:XY7kmzoNzl100@localhost:8080/eshopping/oauth/token -d grant_type=password -d username=jane.diaz -d password=abc123456
+or
+curl -H "Authorization: Basic cHJvZHVjdC1kYXNoYm9hcmQtY2xpZW50LWlkOlhZN2ttem9OemwxMDA=" http://localhost:8080/eshopping/oauth/token -d grant_type=password -d username=jane.diaz -d password=abc123456
+```
+```bash
+for a user with an admin role
+curl product-dashboard-client-id:XY7kmzoNzl100@localhost:8080/eshopping/oauth/token -d grant_type=password -d username=super.admin -d password=passw0rd$1
+or
+curl -H "Authorization: Basic cHJvZHVjdC1kYXNoYm9hcmQtY2xpZW50LWlkOlhZN2ttem9OemwxMDA=" http://localhost:8080/eshopping/oauth/token -d grant_type=password -d username=super.admin -d password=passw0rd$1
+```
+You will get an input similar to:
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicHJvZHVjdC1kYXNoYm9hcmQtcmVzb3VyY2UtaWQiXSwidXNlcl9uYW1lIjoiamFuZS5kaWF6Iiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTU2NTE0OTQ0OCwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkQiXSwianRpIjoiNGExZjdlZjEtZmNhZC00YjQzLTgwM2EtMTkwNDJiMjY5ZDkwIiwiY2xpZW50X2lkIjoicHJvZHVjdC1kYXNoYm9hcmQtY2xpZW50LWlkIn0.RdEp_yqQ1115sVYzxDg1QkhzL7Gx30XekMVj2bfmj70",
+  "token_type": "bearer",
+  "expires_in": 43199,
+  "scope": "read write",
+  "jti": "4a1f7ef1-fcad-4b43-803a-19042b269d90"
+}
+```
+
+
+## Use an access token
+When calling any /eshopping/* path use a Authorizaiton Bearer scheme:
+```bash
+curl http://localhost:8080/eshopping/products -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicHJvZHVjdC1kYXNoYm9hcmQtcmVzb3VyY2UtaWQiXSwidXNlcl9uYW1lIjoiamFuZS5kaWF6Iiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTU2NTE0OTQ0OCwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkQiXSwianRpIjoiNGExZjdlZjEtZmNhZC00YjQzLTgwM2EtMTkwNDJiMjY5ZDkwIiwiY2xpZW50X2lkIjoicHJvZHVjdC1kYXNoYm9hcmQtY2xpZW50LWlkIn0.RdEp_yqQ1115sVYzxDg1QkhzL7Gx30XekMVj2bfmj70"
+```
 
 
 ## IDE Considerations

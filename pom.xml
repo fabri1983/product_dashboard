@@ -5,8 +5,8 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.hackerrank.eshopping.product.dashboard</groupId>
-    <artifactId>hackerrank-app</artifactId>
+    <groupId>org.fabri1983.eshopping.product.dashboard</groupId>
+    <artifactId>product-dashboard</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -15,17 +15,44 @@
         <java.version>1.8</java.version> <!-- Spring Boot only -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        
         <mapstruct.version>1.3.0.Final</mapstruct.version>
-		<!-- Eclipse: automatically run annotation processors within the incremental compilation -->
+        
+        <!-- default spring profile. Do not change/remove this line. Used by declared maven profiles -->
+        <spring.profiles.active>default</spring.profiles.active>
+        
+		<!-- Eclipse IDE: automatically run annotation processors within the incremental compilation -->
   		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
+  		
+  		<spring.security.jwt.version>1.0.10.RELEASE</spring.security.jwt.version>
+		<spring.security-oauth2.version>2.3.6.RELEASE</spring.security-oauth2.version>
+		<hibernate.jpa.api.version>1.0.2.Final</hibernate.jpa.api.version>
     </properties>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.0.RELEASE</version>
+        <version>2.1.6.RELEASE</version>
     </parent>
 
+	<profiles>
+		<profile>
+			<id>repository-jpa</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<spring.profiles.active>repository-jpa</spring.profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<id>repository-in-memory</id>
+			<properties>
+				<spring.profiles.active>repository-in-memory</spring.profiles.active>
+			</properties>
+		</profile>
+	</profiles>
+	
     <dependencies>
 
 		<!-- MapStruct: Java Bean Mapper -->
@@ -57,6 +84,11 @@
 			<version>1.1.1</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
@@ -67,10 +99,25 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>        
+        <dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-jwt</artifactId>
+			<version>${spring.security.jwt.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+			<version>${spring.security-oauth2.version}</version>
+		</dependency>
+
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.1-api</artifactId>
-            <version>1.0.2.Final</version>
+            <version>${hibernate.jpa.api.version}</version>
         </dependency>
 
         <dependency>
@@ -121,16 +168,28 @@
             <scope>test</scope>
             <type>jar</type>
         </dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
     </dependencies>
     
     <build>
     	<plugins>
+    		<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
 					<source>${maven.compiler.source}</source>
 					<target>${maven.compiler.target}</target>
+					<parameters>true</parameters>
 					<annotationProcessorPaths>
 						<path>
 							<groupId>org.mapstruct</groupId>
