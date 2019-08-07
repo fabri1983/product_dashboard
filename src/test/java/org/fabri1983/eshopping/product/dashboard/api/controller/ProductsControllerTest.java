@@ -11,6 +11,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.fabri1983.eshopping.product.dashboard.util.HttpBearerRequestPostProcessor.*;
 
 import org.junit.Before;
 import org.junit.ClassRule;
@@ -122,7 +123,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-            		.header("Authorization", "Bearer " + accessToken)
+            		.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -146,7 +147,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-            		.header("Authorization", "Bearer " + accessToken)
+            		.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -170,7 +171,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-    				.header("Authorization", "Bearer " + accessToken)
+    				.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -194,7 +195,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-                	.header("Authorization", "Bearer " + accessToken)
+                	.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -218,7 +219,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-        			.header("Authorization", "Bearer " + accessToken)
+        			.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -242,7 +243,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-        			.header("Authorization", "Bearer " + accessToken)
+        			.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -266,7 +267,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-        			.header("Authorization", "Bearer " + accessToken)
+        			.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -290,7 +291,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-                	.header("Authorization", "Bearer " + accessToken)
+                	.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -314,7 +315,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-        			.header("Authorization", "Bearer " + accessToken)
+        			.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -338,7 +339,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-        			.header("Authorization", "Bearer " + accessToken)
+        			.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -362,7 +363,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-        			.header("Authorization", "Bearer " + accessToken)
+        			.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -386,7 +387,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-        			.header("Authorization", "Bearer " + accessToken)
+        			.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -410,7 +411,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-        			.header("Authorization", "Bearer " + accessToken)
+        			.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -434,7 +435,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-        			.header("Authorization", "Bearer " + accessToken)
+        			.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -458,7 +459,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-        			.header("Authorization", "Bearer " + accessToken)
+        			.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -482,7 +483,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-        			.header("Authorization", "Bearer " + accessToken)
+        			.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -506,7 +507,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-        			.header("Authorization", "Bearer " + accessToken)
+        			.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -530,7 +531,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-        			.header("Authorization", "Bearer " + accessToken)
+        			.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -554,7 +555,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-        			.header("Authorization", "Bearer " + accessToken)
+        			.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -578,7 +579,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-        			.header("Authorization", "Bearer " + accessToken)
+        			.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -602,7 +603,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-        			.header("Authorization", "Bearer " + accessToken)
+        			.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -636,7 +637,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 post("/products")
-                	.header("Authorization", "Bearer " + accessToken)
+                	.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -680,7 +681,7 @@ public class ProductsControllerTest {
                ResultMatcher.matchJson(
                    mockMvc.perform(
             		   		put("/products/6")
-            		   			.header("Authorization", "Bearer " + accessToken)
+            		   			.with(httpBearer(accessToken))
                        			.contentType(MediaType.APPLICATION_JSON_UTF8)
                        			.content(json)
                        	)
@@ -731,7 +732,7 @@ public class ProductsControllerTest {
                ResultMatcher.matchJson(
                    mockMvc.perform(
             		   		put("/products/10")
-            		   			.header("Authorization", "Bearer " + accessToken)
+            		   			.with(httpBearer(accessToken))
             		   			.contentType(MediaType.APPLICATION_JSON_UTF8)
             		   			.content(json)
             		   	)
@@ -782,7 +783,7 @@ public class ProductsControllerTest {
                 ResultMatcher.matchJson(
                     mockMvc.perform(
              		   		put("/products/2")
-             		   			.header("Authorization", "Bearer " + accessToken)
+             		   			.with(httpBearer(accessToken))
                         		.contentType(MediaType.APPLICATION_JSON_UTF8)
                         		.content(json)
                         )
@@ -834,7 +835,7 @@ public class ProductsControllerTest {
                 ResultMatcher.matchJson(
                     mockMvc.perform(
              		   		put("/products/12")
-             		   			.header("Authorization", "Bearer " + accessToken)
+             		   			.with(httpBearer(accessToken))
                         		.contentType(MediaType.APPLICATION_JSON_UTF8)
                         		.content(json)
                         )
@@ -887,7 +888,7 @@ public class ProductsControllerTest {
                 ResultMatcher.matchJson(
                     mockMvc.perform(
              		   		put("/products/19")
-             		   			.header("Authorization", "Bearer " + accessToken)
+             		   			.with(httpBearer(accessToken))
                         		.contentType(MediaType.APPLICATION_JSON_UTF8)
                         		.content(json)
                         )
@@ -939,7 +940,7 @@ public class ProductsControllerTest {
                 ResultMatcher.matchJson(
                     mockMvc.perform(
              		   		put("/products/20")
-             		   			.header("Authorization", "Bearer " + accessToken)
+             		   			.with(httpBearer(accessToken))
                         		.contentType(MediaType.APPLICATION_JSON_UTF8)
                         		.content(json)
                         )
@@ -992,7 +993,7 @@ public class ProductsControllerTest {
                 ResultMatcher.matchJson(
                     mockMvc.perform(
              		   		put("/products/13")
-             		   			.header("Authorization", "Bearer " + accessToken)
+             		   			.with(httpBearer(accessToken))
                         		.contentType(MediaType.APPLICATION_JSON_UTF8)
                         		.content(json)
                         )
@@ -1030,7 +1031,7 @@ public class ProductsControllerTest {
 
         mockMvc.perform(
                 put("/products/25")
-        			.header("Authorization", "Bearer " + accessToken)
+        			.with(httpBearer(accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(json)
         		)
@@ -1066,7 +1067,7 @@ public class ProductsControllerTest {
                 ResultMatcher.matchJson(
                     mockMvc.perform(
                     		get("/products/2")
-                    			.header("Authorization", "Bearer " + accessToken)
+                    			.with(httpBearer(accessToken))
                     	)
                         .andExpect(status().isOk())
                         .andReturn()
@@ -1093,7 +1094,7 @@ public class ProductsControllerTest {
          */
         mockMvc.perform(
         			get("/products/25")
-        				.header("Authorization", "Bearer " + accessToken)
+        				.with(httpBearer(accessToken))
             	)
                 .andExpect(status().isNotFound());
     }
@@ -1169,7 +1170,7 @@ public class ProductsControllerTest {
                 ResultMatcher.matchJsonArray(
                     mockMvc.perform(
                     		get("/products?category=Accessories")
-                    			.header("Authorization", "Bearer " + accessToken)
+                    			.with(httpBearer(accessToken))
                     	)
                         .andExpect(status().isOk())
                         .andReturn()
@@ -1203,7 +1204,7 @@ public class ProductsControllerTest {
                 ResultMatcher.matchJsonArray(
                     mockMvc.perform(
                     		get("/products?category=Swimwear")
-                    			.header("Authorization", "Bearer " + accessToken)
+                    			.with(httpBearer(accessToken))
                     	)
                         .andExpect(status().isOk())
                         .andReturn()
@@ -1286,7 +1287,7 @@ public class ProductsControllerTest {
                 ResultMatcher.matchJsonArray(
                     mockMvc.perform(
                     		get("/products?category=Full%20Body%20Outfits&availability=1")
-                    			.header("Authorization", "Bearer " + accessToken)
+                    			.with(httpBearer(accessToken))
                     	)
                         .andExpect(status().isOk())
                         .andReturn()
@@ -1343,7 +1344,7 @@ public class ProductsControllerTest {
                 ResultMatcher.matchJsonArray(
                     mockMvc.perform(
                     		get("/products?category=Full%20Body%20Outfits&availability=0")
-                    			.header("Authorization", "Bearer " + accessToken)
+                    			.with(httpBearer(accessToken))
                     	)
                         .andExpect(status().isOk())
                         .andReturn()
@@ -1377,7 +1378,7 @@ public class ProductsControllerTest {
                 ResultMatcher.matchJsonArray(
                     mockMvc.perform(
                     		get("/products?category=Swimwear&availability=1")
-                    			.header("Authorization", "Bearer " + accessToken)
+                    			.with(httpBearer(accessToken))
                     		)
                         .andExpect(status().isOk())
                         .andReturn()
@@ -1580,7 +1581,7 @@ public class ProductsControllerTest {
                 ResultMatcher.matchJsonArray(
                     mockMvc.perform(
                     		get("/products")
-                    			.header("Authorization", "Bearer " + accessToken)
+                    			.with(httpBearer(accessToken))
                     	)
                         .andExpect(status().isOk())
                         .andReturn()
