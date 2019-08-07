@@ -7,7 +7,8 @@
 [![Code Climate](https://codeclimate.com/github/fabri1983/product_dashboard/badges/gpa.svg)](https://codeclimate.com/github/fabri1983/product_dashboard)
 
 
-This project uses JPA, Spring Profiles, and Spring Security with OAuth2 for JWT authorization when accessing web resources.
+This project uses JPA, Spring Profiles, and Spring Security with OAuth2 for JWT authorization when accessing web resources. 
+See related sections at the end of this document.
 
  
 ## E-Shopping: Product Dashboard
@@ -91,7 +92,7 @@ Make sure that:
 For example, sending retailprice, retail-price, or retailPrice in the response when retail_price is expected is a wrong response. 
 
 
-## Generate an access token
+## Generate an JWT access token
 Use the following generic command to generate an access token:
 ```bash
 curl <client-id>:<secret>@localhost:8080/eshopping/oauth/token -d grant_type=password -d username=<username> -d password=<plain-text-pass>
@@ -121,7 +122,7 @@ You will get an input similar to:
 ```
 
 
-## Use an access token
+## Use an JWT access token
 When calling any /eshopping/* path use a Authorizaiton Bearer scheme:
 ```bash
 curl http://localhost:8080/eshopping/products -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicHJvZHVjdC1kYXNoYm9hcmQtcmVzb3VyY2UtaWQiXSwidXNlcl9uYW1lIjoiamFuZS5kaWF6Iiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTU2NTE0OTQ0OCwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkQiXSwianRpIjoiNGExZjdlZjEtZmNhZC00YjQzLTgwM2EtMTkwNDJiMjY5ZDkwIiwiY2xpZW50X2lkIjoicHJvZHVjdC1kYXNoYm9hcmQtY2xpZW50LWlkIn0.RdEp_yqQ1115sVYzxDg1QkhzL7Gx30XekMVj2bfmj70"
