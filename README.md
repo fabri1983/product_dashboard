@@ -7,7 +7,7 @@
 [![Code Climate](https://codeclimate.com/github/fabri1983/product_dashboard/badges/gpa.svg)](https://codeclimate.com/github/fabri1983/product_dashboard)
 
 
-This project uses JPA, Spring Profiles, and Spring Security with OAuth2 for JWT authorization when accessing web resources. 
+This project uses JPA, Spring Profiles, and Spring Security with OAuth2 for JWT generation/authorization when accessing web resources. 
 See related sections at the end of this document.
 
  
@@ -95,20 +95,20 @@ For example, sending retailprice, retail-price, or retailPrice in the response w
 ## Generate an JWT access token
 Use the following generic command to generate an access token:
 ```bash
-curl <client-id>:<secret>@localhost:8080/eshopping/oauth/token -d grant_type=password -d username=<username> -d password=<plain-text-pass>
+curl <client-id>:<secret>@localhost:8080/eshopping/auth/jwt -d grant_type=password -d username=<username> -d password=<plain-text-pass>
 ```
 For instance:
 for a user with a standard role
 ```bash
-curl product-dashboard-client-id:XY7kmzoNzl100@localhost:8080/eshopping/oauth/token -d grant_type=password -d username=jane.diaz -d password=abc123456
+curl product-dashboard-client-id:XY7kmzoNzl100@localhost:8080/eshopping/auth/jwt -d grant_type=password -d username=jane.diaz -d password=abc123456
 or
-curl -H "Authorization: Basic cHJvZHVjdC1kYXNoYm9hcmQtY2xpZW50LWlkOlhZN2ttem9OemwxMDA=" http://localhost:8080/eshopping/oauth/token -d grant_type=password -d username=jane.diaz -d password=abc123456
+curl -H "Authorization: Basic cHJvZHVjdC1kYXNoYm9hcmQtY2xpZW50LWlkOlhZN2ttem9OemwxMDA=" http://localhost:8080/eshopping/auth/jwt -d grant_type=password -d username=jane.diaz -d password=abc123456
 ```
 for a user with an admin role
 ```bash
-curl product-dashboard-client-id:XY7kmzoNzl100@localhost:8080/eshopping/oauth/token -d grant_type=password -d username=super.admin -d password=passw0rd$1
+curl product-dashboard-client-id:XY7kmzoNzl100@localhost:8080/eshopping/auth/jwt -d grant_type=password -d username=super.admin -d password=passw0rd$1
 or
-curl -H "Authorization: Basic cHJvZHVjdC1kYXNoYm9hcmQtY2xpZW50LWlkOlhZN2ttem9OemwxMDA=" http://localhost:8080/eshopping/oauth/token -d grant_type=password -d username=super.admin -d password=passw0rd$1
+curl -H "Authorization: Basic cHJvZHVjdC1kYXNoYm9hcmQtY2xpZW50LWlkOlhZN2ttem9OemwxMDA=" http://localhost:8080/eshopping/auth/jwt -d grant_type=password -d username=super.admin -d password=passw0rd$1
 ```
 You will get an input similar to:
 ```json

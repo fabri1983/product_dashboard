@@ -73,7 +73,7 @@ public class ProductsControllerTest {
         params.add("password", password);
      
         ResultActions result = mockMvc.perform(
-        		post("/oauth/token")
+        		post("/auth/jwt")
 		            .params(params)
 		            .with(httpBasic(oauth2ClientId, oauth2Secret))
 		            .accept("application/json;charset=UTF-8")

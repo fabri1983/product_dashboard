@@ -74,7 +74,9 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 		endpoints.tokenStore(tokenStore)
 				.accessTokenConverter(accessTokenConverter)
 				.tokenEnhancer(enhancerChain)
-				.authenticationManager(authenticationManager);
+				.authenticationManager(authenticationManager)
+				// re map default oauth endpoint path to custom path
+				.pathMapping("/oauth/token", "/auth/jwt");
 	}
 
 }
