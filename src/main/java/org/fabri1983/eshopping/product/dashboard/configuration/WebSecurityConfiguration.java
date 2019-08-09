@@ -61,7 +61,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.and()
 				.httpBasic().realmName(securityRealm)
 				.and()
-				.csrf().disable();
+				.csrf().disable(); // FIXME disabled for sake of testing
 	}
 
 	@Bean
