@@ -10,6 +10,12 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.6.RELEASE</version>
+	</parent>
+	
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version> <!-- Spring Boot only -->
@@ -18,7 +24,7 @@
         
         <mapstruct.version>1.3.0.Final</mapstruct.version>
         
-        <!-- default spring profile. Do not change/remove this line. Used by declared maven profiles -->
+        <!-- default spring profile. Do not change/remove this line. Used by declared maven profiles in this pom.xml -->
         <spring.profiles.active>default</spring.profiles.active>
         
 		<!-- Eclipse IDE: automatically run annotation processors within the incremental compilation -->
@@ -28,12 +34,6 @@
 		<spring.security-oauth2.version>2.3.6.RELEASE</spring.security-oauth2.version>
 		<hibernate.jpa.api.version>1.0.2.Final</hibernate.jpa.api.version>
     </properties>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.6.RELEASE</version>
-    </parent>
 
 	<profiles>
 		<profile>

@@ -7,17 +7,18 @@
 [![Code Climate](https://codeclimate.com/github/fabri1983/product_dashboard/badges/gpa.svg)](https://codeclimate.com/github/fabri1983/product_dashboard)
 
 
-This project uses JPA, Spring Profiles, and Spring Security with OAuth2 for JWT generation/authorization when accessing web resources. 
-See related sections at the end of this document.
+This project uses JPA, Spring Profiles, and Spring Security with OAuth2 for JWT authorization strategy when accessing web endpoints.  
+See related sections at the end of this document.  
+The project depends on Maven 3.6.x. You can use `mvnw` if you don't have Maven installed in your host.
 
  
 ## E-Shopping: Product Dashboard
 
-In this challenge, you are part of team building product dashboard for internal usage. 
-One requirement is to create REST API service using Spring Boot framework that provides functionality to add, update and fetch products.
+In this challenge, you are part of team building product dashboard for internal usage.  
+One requirement is to create REST API service using Spring Boot framework that provides functionality to add, update and fetch products.  
 
-The definitions and a detailed requirements list follow. 
-You will be graded on whether your application performs data retrieval and manipulation based on given use cases exactly as described in the requirements.
+The definitions and a detailed requirements list follow.  
+You will be graded on whether your application performs data retrieval and manipulation based on given use cases exactly as described in the requirements.  
 
 Each product is a JSON entry with the following keys:
 
@@ -28,7 +29,7 @@ Each product is a JSON entry with the following keys:
 - discounted_price: The current selling price of the product. The price is given up to two places of decimal.
 - availability: A boolean value that indicates whether the product is in stock (true) or out of stock (false).
  
- Sample Product JSON:
+Sample Product JSON:
  ```json
 {
   "id": 1,
@@ -48,7 +49,7 @@ The REST API service should implement the following functionalities:
 	- If a product with the same ID already exists then the HTTP response code should be 400; otherwise, the response code should be 201.
 
 - 2. Update a product by id: 
-The service should be able to update a product by the PUT request at /eshopping/products/{product_id}. 
+The service should be able to update a product by the PUT request at /eshopping/products/{product_id}.  
 The product JSON sent in the request body is described by the following keys:
 	- retail_price: The updated retail price. The value may remain unchanged.
 	- discounted_price: The updated discounted price. The value may remain unchanged.
@@ -56,35 +57,33 @@ The product JSON sent in the request body is described by the following keys:
 If the product with the requested ID does not exist then the HTTP response code should be 400; otherwise, the response code should be 200.
 
 - 3. Return a product by id: 
-The service should be able to return the product by the given ID by the GET request at /eshopping/products/{product_id}. 
+The service should be able to return the product by the given ID by the GET request at /eshopping/products/{product_id}.  
 If the product with the requested ID does not exist then the HTTP response code should be 404; otherwise, the response code should be 200.
 
 - 4. Return products by category: 
-The service should be able to return the JSON array of all the products by the given category by the GET request at /eshopping/products?category={category}. 
-The HTTP response code should be 200. The JSON array should be sorted by the availability, in stock products must be listed before out of stock products. 
-The products with same availability status must be sorted by the discounted price in the ascending order. 
+The service should be able to return the JSON array of all the products by the given category by the GET request at /eshopping/products?category={category}.  
+The HTTP response code should be 200. The JSON array should be sorted by the availability, in stock products must be listed before out of stock products.  
+The products with same availability status must be sorted by the discounted price in the ascending order.  
 Finally, the products with same discounted price must be sorted by the ID in the ascending order.
-
 
 - 5. Return products by category and availability: 
 The service should be able to return the JSON array of all the products by the given category and availability by the GET request 
 at /eshopping/products?category={category}&availability={availability}. 
-The availability is described by 0 (false) and 1 (true). 
-The HTTP response code should be 200. 
-The JSON array should be sorted by the discount percentage in the descending order. 
-The products with same discount percentage status must be sorted by the discounted price in the ascending order. 
-Finally, the products with same discounted price must be sorted by the ID in the ascending order.
+The availability is described by 0 (false) and 1 (true).  
+The HTTP response code should be 200.  
+The JSON array should be sorted by the discount percentage in the descending order.  
+The products with same discount percentage status must be sorted by the discounted price in the ascending order.  
+Finally, the products with same discounted price must be sorted by the ID in the ascending order.  
 The discount percentage is calculated as:
 	- Discount Percentage = ((Retail Price — Discounted Price) ⁄ Retail Price) * 100
 
 - 6. Return all products: 
-The service should be able to return the JSON array of all products by the GET request at /eshopping/products. 
+The service should be able to return the JSON array of all products by the GET request at /eshopping/products.  
 The HTTP response code should be 200. The JSON array should be sorted by the ID in the ascending order.
 
 
-
-Complete the given project so that it passes all the test cases when running the provided JUnit tests. 
-The project by default supports the use of H2 database, but you can make use of any database to store the data by specifying the dependency in the pom.xml file. 
+Complete the given project so that it passes all the test cases when running the provided JUnit tests.  
+The project by default supports the use of H2 database, but you can make use of any database to store the data by specifying the dependency in the pom.xml file.  
 
 Make sure that:
 - You configure the models correctly, so serialization and deserialization work as expected.
