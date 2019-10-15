@@ -121,7 +121,7 @@ You will get an input similar to:
 ```
 
 
-## Use an JWT access token
+## Use a JWT access token
 When calling any /eshopping/* path use the Authorization Bearer scheme:
 ```bash
 curl http://localhost:8080/eshopping/products -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicHJvZHVjdC1kYXNoYm9hcmQtcmVzb3VyY2UtaWQiXSwidXNlcl9uYW1lIjoiamFuZS5kaWF6Iiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTU2NTE0OTQ0OCwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkQiXSwianRpIjoiNGExZjdlZjEtZmNhZC00YjQzLTgwM2EtMTkwNDJiMjY5ZDkwIiwiY2xpZW50X2lkIjoicHJvZHVjdC1kYXNoYm9hcmQtY2xpZW50LWlkIn0.RdEp_yqQ1115sVYzxDg1QkhzL7Gx30XekMVj2bfmj70"
@@ -129,5 +129,7 @@ curl http://localhost:8080/eshopping/products -H "Authorization: Bearer eyJhbGci
 
 
 ## IDE Considerations
-This project uses **MapStruct Bean Mapper**. So you need to install a plugin in your IDE to properly generate code for the mappers you declare.
-See http://mapstruct.org/documentation/ide-support/.
+This project uses **MapStruct Bean Mapper**. So you need to install a plugin in your IDE to properly generate code for the mappers you declare.  
+Install Eclipse plugin: *m2e-apt*.  
+Edit your pom.xml by adding inside `<properties>` tag: `<m2e.apt.activation>jdt_apt</m2e.apt.activation>`  
+See http://mapstruct.org/documentation/ide-support/.  
