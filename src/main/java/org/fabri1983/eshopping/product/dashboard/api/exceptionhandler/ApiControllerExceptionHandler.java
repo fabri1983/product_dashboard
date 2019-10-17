@@ -4,6 +4,7 @@ import org.fabri1983.eshopping.product.dashboard.api.exception.ApiUnsupportedEnc
 import org.fabri1983.eshopping.product.dashboard.business.exception.BusinessException;
 import org.fabri1983.eshopping.product.dashboard.business.exception.DashboardEntityException;
 import org.fabri1983.eshopping.product.dashboard.business.exception.EntityIdException;
+import org.fabri1983.eshopping.product.dashboard.business.exception.EntityVersionMismatchException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -24,6 +25,12 @@ public class ApiControllerExceptionHandler extends ResponseEntityExceptionHandle
 	protected ResponseEntity<ApiError> handle400EntityException(BusinessException cause) {
 		ApiError apiError = ApiError.from(cause.getCode(), cause.getMessage());
 		return buildResponseEntity(HttpStatus.BAD_REQUEST, apiError);
+	}
+	
+	@ExceptionHandler({ EntityVersionMismatchException.class })
+	protected ResponseEntity<ApiError> handle409EntityException(BusinessException cause) {
+		ApiError apiError = ApiError.from(cause.getCode(), cause.getMessage());
+		return buildResponseEntity(HttpStatus.CONFLICT, apiError);
 	}
 	
 	@ExceptionHandler({ ApiUnsupportedEncodingException.class })

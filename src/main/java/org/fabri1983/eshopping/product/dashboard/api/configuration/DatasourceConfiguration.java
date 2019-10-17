@@ -1,4 +1,4 @@
-package org.fabri1983.eshopping.product.dashboard.configuration;
+package org.fabri1983.eshopping.product.dashboard.api.configuration;
 
 import java.beans.PropertyVetoException;
 

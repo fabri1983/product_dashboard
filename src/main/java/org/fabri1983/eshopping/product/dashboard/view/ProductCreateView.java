@@ -26,6 +26,10 @@ public class ProductCreateView {
 		return newObj;
 	}
 
+	public static ProductCreateViewBuilder builder() {
+		return new ProductCreateViewBuilder();
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -72,6 +76,50 @@ public class ProductCreateView {
 
 	public void setAvailability(Boolean availability) {
 		this.availability = availability;
+	}
+	
+	public static class ProductCreateViewBuilder {
+
+		ProductCreateView prodView;
+		
+		public ProductCreateViewBuilder() {
+			prodView = new ProductCreateView();
+		}
+		
+		public ProductCreateViewBuilder id(Long id) {
+			prodView.setId(id);
+			return this;
+		}
+
+		public ProductCreateViewBuilder name(String name) {
+			prodView.setName(name);
+			return this;
+		}
+		
+		public ProductCreateViewBuilder category(String category) {
+			prodView.setCategory(category);
+			return this;
+		}
+
+		public ProductCreateViewBuilder retailPrice(Double retailPrice) {
+			prodView.setRetailPrice(retailPrice);
+			return this;
+		}
+		
+		public ProductCreateViewBuilder discountedPrice(Double discountedPrice) {
+			prodView.setDiscountedPrice(discountedPrice);
+			return this;
+		}
+		
+		public ProductCreateViewBuilder availability(Boolean availability) {
+			prodView.setAvailability(availability);
+			return this;
+		}
+		
+		public ProductCreateView build() {
+			return prodView;
+		}
+		
 	}
 	
 }

@@ -3,6 +3,7 @@ package org.fabri1983.eshopping.product.dashboard.business.validation;
 import org.fabri1983.eshopping.product.dashboard.business.exception.BusinessException;
 import org.fabri1983.eshopping.product.dashboard.business.exception.DashboardEntityException;
 import org.fabri1983.eshopping.product.dashboard.business.exception.EntityIdException;
+import org.fabri1983.eshopping.product.dashboard.business.exception.EntityVersionMismatchException;
 
 public enum ValidationStatus {
 	
@@ -34,6 +35,16 @@ public enum ValidationStatus {
 		@Override
 		public BusinessException _throwWith(Throwable cause) {
 			throw new EntityIdException(code, message, cause);
+		}
+	},
+	ENTITY_VERSION_MISMATCH(1004, "Entity version mismatched.") {
+		@Override
+		public BusinessException _throw() {
+			throw new EntityVersionMismatchException(code, message);
+		}
+		@Override
+		public BusinessException _throwWith(Throwable cause) {
+			throw new EntityVersionMismatchException(code, message, cause);
 		}
 	};
 

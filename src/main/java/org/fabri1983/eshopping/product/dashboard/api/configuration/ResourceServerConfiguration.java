@@ -1,4 +1,4 @@
-package org.fabri1983.eshopping.product.dashboard.configuration;
+package org.fabri1983.eshopping.product.dashboard.api.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

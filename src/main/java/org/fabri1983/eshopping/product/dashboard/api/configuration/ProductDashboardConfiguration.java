@@ -1,5 +1,7 @@
-package org.fabri1983.eshopping.product.dashboard.configuration;
+package org.fabri1983.eshopping.product.dashboard.api.configuration;
 
+import org.fabri1983.eshopping.product.dashboard.api.configuration.conditional.ConditionalRepositoryInMemory;
+import org.fabri1983.eshopping.product.dashboard.api.configuration.conditional.ConditionalRepositoryJpa;
 import org.fabri1983.eshopping.product.dashboard.api.mapper.FilterParametersMapperForViewModel;
 import org.fabri1983.eshopping.product.dashboard.api.mapper.FilterParametersMapperForViewModelImpl;
 import org.fabri1983.eshopping.product.dashboard.api.mapper.ProductMapperForViewModel;
@@ -13,8 +15,6 @@ import org.fabri1983.eshopping.product.dashboard.business.mapper.RoleAuthMapperF
 import org.fabri1983.eshopping.product.dashboard.business.mapper.RoleAuthMapperForModelEntityImpl;
 import org.fabri1983.eshopping.product.dashboard.business.mapper.UserAuthMapperForModelEntity;
 import org.fabri1983.eshopping.product.dashboard.business.mapper.UserAuthMapperForModelEntityImpl;
-import org.fabri1983.eshopping.product.dashboard.configuration.conditional.ConditionalRepositoryInMemory;
-import org.fabri1983.eshopping.product.dashboard.configuration.conditional.ConditionalRepositoryJpa;
 import org.fabri1983.eshopping.product.dashboard.repository.ProductInMemoryRepository;
 import org.fabri1983.eshopping.product.dashboard.repository.ProductJpaRepository;
 import org.fabri1983.eshopping.product.dashboard.repository.RoleAuthJpaRepository;

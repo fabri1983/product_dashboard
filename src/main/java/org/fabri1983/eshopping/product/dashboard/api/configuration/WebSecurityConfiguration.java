@@ -1,4 +1,4 @@
-package org.fabri1983.eshopping.product.dashboard.configuration;
+package org.fabri1983.eshopping.product.dashboard.api.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -61,7 +61,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.and()
 				.httpBasic().realmName(securityRealm)
 				.and()
-				.csrf().disable(); // FIXME disabled for sake of testing
+				.csrf()
+				.and()
+				.cors();
 	}
 
 	@Bean
