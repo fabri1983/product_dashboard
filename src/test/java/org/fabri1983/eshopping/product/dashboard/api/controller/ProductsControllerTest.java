@@ -29,6 +29,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -41,8 +42,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles({"test", "repository-jpa"})
+@TestPropertySource(locations = "classpath:test.properties")
 @TestMethodOrder(OrderAnnotation.class)
-@DisplayName("ProductsController.")
+@DisplayName("Given a ProductsController.")
 public class ProductsControllerTest {
     
 	@Autowired
@@ -77,10 +79,10 @@ public class ProductsControllerTest {
         		post("/auth/jwt")
 		            .params(params)
 		            .with(httpBasic(oauth2ClientId, oauth2Secret))
-		            .accept("application/json;charset=UTF-8")
+		            .accept(MediaType.APPLICATION_JSON_UTF8)
         		)
 		        .andExpect(status().isOk())
-		        .andExpect(content().contentType("application/json;charset=UTF-8"));
+		        .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
      
         String resultString = result.andReturn().getResponse().getContentAsString();
      
@@ -89,7 +91,7 @@ public class ProductsControllerTest {
     }
 
 	@Test
-	@DisplayName("Given no JWT in header. When GET /products (secured). Then HTTP Status: Unauthorized (401).")
+	@DisplayName("When no JWT in header. When GET /products (secured). Then HTTP Status Unauthorized (401).")
 	@Order(-2)
 	public void givenNoToken_whenGetSecureRequest_thenUnauthorized() throws Exception {
 	    mockMvc
@@ -115,13 +117,8 @@ public class ProductsControllerTest {
 			.andExpect(header().string(HttpHeaders.ACCESS_CONTROL_MAX_AGE, "3600"));
 	}
 
-	/**
-     * It tests creating a product
-     *
-     * @throws Exception
-     */
     @Test
-    @DisplayName("When POST on /products. Then HTTP Status: Created (201).")
+    @DisplayName("When POST on /products. Then HTTP Status Created (201).")
     @Order(1)
     public void createProducts() throws Exception {
         
@@ -367,13 +364,8 @@ public class ProductsControllerTest {
      		);
 	}
 
-	/**
-	 * It tests creating a product
-     *
-     * @throws Exception
-     */
     @Test
-    @DisplayName("When POST on /products with existing id. Then HTTP Status: Bad Request (400).")
+    @DisplayName("When POST on /products with existing id. Then HTTP Status Bad Request (400).")
     @Order(2)
     public void createProductWithExistingId() throws Exception {
     	/**
@@ -399,12 +391,8 @@ public class ProductsControllerTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
     }
 
-    /**
-     * It tests updating retail price of a product
-     *
-     * @throws Exception
-     */
     @Test
+    @DisplayName("When PUT on /products/6 with new retailPrice. Then HTTP Status OK (200) and product is updated.")
     @Order(3)
     public void updateProductRetailPrice() throws Exception {
         /**
@@ -441,12 +429,8 @@ public class ProductsControllerTest {
            .andExpect(content().json(asJsonString(expectedProd), true));
     }
 
-    /**
-     * It tests updating discount price of a product
-     *
-     * @throws Exception
-     */
     @Test
+    @DisplayName("When PUT on /products/10 with new discountedPrice. Then HTTP Status OK (200) and product is updated.")
     @Order(4)
     public void updateProductDiscountPrice() throws Exception {
     	/**
@@ -483,12 +467,8 @@ public class ProductsControllerTest {
 			.andExpect(content().json(asJsonString(expectedProd), true));
     }
 
-    /**
-     * It tests updating availability of a product
-     *
-     * @throws Exception
-     */
     @Test
+    @DisplayName("When PUT on /products/2 with new availability. Then HTTP Status OK (200) and product is updated.")
     @Order(5)
     public void updateProductAvailability() throws Exception {
         /**
@@ -525,12 +505,8 @@ public class ProductsControllerTest {
 			.andExpect(content().json(asJsonString(expectedProd), true));
     }
 
-    /**
-     * It tests updating retail and discount price of a product
-     *
-     * @throws Exception
-     */
     @Test
+    @DisplayName("When PUT on /products/12 with new retailPrice and discountedPrice values. Then HTTP Status OK (200) and product is updated.")
     @Order(6)
     public void updateProductRetailAndDiscountPrice() throws Exception {
         /**
@@ -568,12 +544,8 @@ public class ProductsControllerTest {
 			.andExpect(content().json(asJsonString(expectedProd), true));
     }
 
-    /**
-     * It tests updating retail price and availability of a product
-     *
-     * @throws Exception
-     */
     @Test
+    @DisplayName("When PUT on /products/19 with new retailPrice, discountedPrice, and availability values. Then HTTP Status OK (200) and product is updated.")
     @Order(7)
     public void updateProductRetailPriceAndAvailability() throws Exception {
         /**
@@ -618,6 +590,7 @@ public class ProductsControllerTest {
      * @throws Exception
      */
     @Test
+    @DisplayName("When PUT on /products/20 with new discountedPrice and availability values. Then HTTP Status OK (200) and product is updated.")
     @Order(8)
     public void updateProductDiscountPriceAndAvailability() throws Exception {
         /**
@@ -655,12 +628,8 @@ public class ProductsControllerTest {
 			.andExpect(content().json(asJsonString(expectedProd), true));
     }
 
-    /**
-     * It tests updating retail price, discount price and availability of a product
-     *
-     * @throws Exception
-     */
     @Test
+    @DisplayName("When PUT on /products/13 with new retailPrice, discountedPrice, and availability values. Then HTTP Status OK (200) and product is updated.")
     @Order(9)
     public void updateProductRetailPriceDiscountPriceAndAvailability() throws Exception {
         /**
@@ -699,12 +668,8 @@ public class ProductsControllerTest {
 			.andExpect(content().json(asJsonString(expectedProd), true));
     }
 
-    /**
-     * It tests updating availability of non-existing product
-     *
-     * @throws Exception
-     */
     @Test
+    @DisplayName("When PUT on /products/25 with new values of inexistent id. Then HTTP Status Bad Request (400).")
     @Order(10)
     public void updateAvailabilityOfNonExistingProduct() throws Exception {
         /**
@@ -712,12 +677,10 @@ public class ProductsControllerTest {
          *
          * The request body is:
          * {
-         *     "retail_price": 311.0,
-         *     "discounted_price": 258.13,
          *     "availability": true
          * }
          */
-        String json = "{\"retail_price\": 311.0, \"discounted_price\": 258.13, \"availability\": true}";
+        String json = "{\"availability\": true}";
 
         mockMvc
         	.perform(
@@ -730,12 +693,8 @@ public class ProductsControllerTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
     }
 
-    /**
-     * It tests finding a product by id.
-     *
-     * @throws Exception
-     */
     @Test
+    @DisplayName("When GET on /products/2. Then HTTP Status OK (200).")
     @Order(11)
     public void findProductById() throws Exception {
     	/**
@@ -761,12 +720,8 @@ public class ProductsControllerTest {
 			.andExpect(content().json(asJsonString(expectedProd), true));
     }
 
-    /**
-     * It tests finding a product
-     *
-     * @throws Exception
-     */
     @Test
+    @DisplayName("When GET on /products/25 of inexistent id. Then HTTP Status Not Found (404).")
     @Order(12)
     public void findProductByNonExistingId() throws Exception {
         /**
@@ -781,12 +736,8 @@ public class ProductsControllerTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
     }
 
-    /**
-     * It tests finding products belonging to a category
-     *
-     * @throws Exception
-     */
     @Test
+    @DisplayName("When GET on /products?category=Accessories. Then HTTP Status OK (200) and 6 products are returned.")
     @Order(13)
     public void findProductsByCategory() throws Exception {
         /**
@@ -859,12 +810,8 @@ public class ProductsControllerTest {
 			.andExpect(content().json(asJsonString(expectedProds), true));
     }
 
-    /**
-     * It tests finding products belonging to a category
-     *
-     * @throws Exception
-     */
     @Test
+    @DisplayName("When GET on /products?category=Swimwear of inexistent category. Then HTTP Status OK (200) and an empty list is returned.")
     @Order(14)
     public void findProductsByNonExistingCategory() throws Exception {
         /**
@@ -884,14 +831,10 @@ public class ProductsControllerTest {
 			.andExpect(content().json(res, true));
     }
 
-    /**
-     * It tests finding a product with a given category and availability
-     *
-     * @throws Exception
-     */
     @Test
+    @DisplayName("When GET on /products?category=Full%20Body%20Outfits&availability=1. Then HTTP Status OK (200) and 6 products are returned.")
     @Order(15)
-    public void findProductsByCategoryAndAvailability() throws Exception {
+    public void findProductsByCategoryAndAvailabilityTrue() throws Exception {
         /**
          * Find products belonging to a given category and with availability
          *
@@ -956,48 +899,54 @@ public class ProductsControllerTest {
 			.andExpect(status().isOk())
 			.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
 			.andExpect(content().json(res, true));
+    }
 
-        /**
-         * Find products belonging to a given category and with availability
-         *
-         * The request response is:
-         * [
-         *     {
-         *         "id": 19,
-         *         "name": "Suit",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 125.0,
-         *         "discounted_price": 100.0,
-         *         "availability": false
-         *     },
-         *     {
-         *         "id": 21,
-         *         "name": "Dungarees",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 437.0,
-         *         "discounted_price": 362.71,
-         *         "availability": false
-         *     },
-         *     {
-         *         "id": 16,
-         *         "name": "Tracksuit",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 471.0,
-         *         "discounted_price": 423.9,
-         *         "availability": false
-         *     },
-         *     {
-         *         "id": 20,
-         *         "name": "Catsuit",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 158.0,
-         *         "discounted_price": 200.0,
-         *         "availability": false
-         *     }
-         * ]
-         */
-        res = "[{\"id\": 19, \"name\": \"Suit\", \"category\": \"Full Body Outfits\", \"retail_price\": 125.0, \"discounted_price\": 100.0, \"availability\": false}, {\"id\": 21, \"name\": \"Dungarees\", \"category\": \"Full Body Outfits\", \"retail_price\": 437.0, \"discounted_price\": 362.71, \"availability\": false}, {\"id\": 16, \"name\": \"Tracksuit\", \"category\": \"Full Body Outfits\", \"retail_price\": 471.0, \"discounted_price\": 423.9, \"availability\": false}, {\"id\": 20, \"name\": \"Catsuit\", \"category\": \"Full Body Outfits\", \"retail_price\": 158.0, \"discounted_price\": 200.0, \"availability\": false}]";
-
+    
+    @Test
+	@DisplayName("When GET on /products?category=Full%20Body%20Outfits&availability=0. Then HTTP Status OK (200) and 4 products are returned.")
+	@Order(16)
+	public void findProductsByCategoryAndAvailabilityFalse() throws Exception {
+	    /**
+	     * Find products belonging to a given category and with availability
+	     *
+	     * The request response is:
+	     * [
+	     *     {
+	     *         "id": 19,
+	     *         "name": "Suit",
+	     *         "category": "Full Body Outfits",
+	     *         "retail_price": 125.0,
+	     *         "discounted_price": 100.0,
+	     *         "availability": false
+	     *     },
+	     *     {
+	     *         "id": 21,
+	     *         "name": "Dungarees",
+	     *         "category": "Full Body Outfits",
+	     *         "retail_price": 437.0,
+	     *         "discounted_price": 362.71,
+	     *         "availability": false
+	     *     },
+	     *     {
+	     *         "id": 16,
+	     *         "name": "Tracksuit",
+	     *         "category": "Full Body Outfits",
+	     *         "retail_price": 471.0,
+	     *         "discounted_price": 423.9,
+	     *         "availability": false
+	     *     },
+	     *     {
+	     *         "id": 20,
+	     *         "name": "Catsuit",
+	     *         "category": "Full Body Outfits",
+	     *         "retail_price": 158.0,
+	     *         "discounted_price": 200.0,
+	     *         "availability": false
+	     *     }
+	     * ]
+	     */
+	    String res = "[{\"id\": 19, \"name\": \"Suit\", \"category\": \"Full Body Outfits\", \"retail_price\": 125.0, \"discounted_price\": 100.0, \"availability\": false}, {\"id\": 21, \"name\": \"Dungarees\", \"category\": \"Full Body Outfits\", \"retail_price\": 437.0, \"discounted_price\": 362.71, \"availability\": false}, {\"id\": 16, \"name\": \"Tracksuit\", \"category\": \"Full Body Outfits\", \"retail_price\": 471.0, \"discounted_price\": 423.9, \"availability\": false}, {\"id\": 20, \"name\": \"Catsuit\", \"category\": \"Full Body Outfits\", \"retail_price\": 158.0, \"discounted_price\": 200.0, \"availability\": false}]";
+	
 		mockMvc
 			.perform(
 				get("/products?category=Full%20Body%20Outfits&availability=0")
@@ -1006,15 +955,11 @@ public class ProductsControllerTest {
 			.andExpect(status().isOk())
 			.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
 			.andExpect(content().json(res, true));
-    }
+	}
 
-    /**
-     * It tests finding a product with a given category and availability
-     *
-     * @throws Exception
-     */
-    @Test
-    @Order(16)
+	@Test
+	@DisplayName("When GET on /products?category=Swimwear&availability=1. Then HTTP Status OK (200) and an empty list is returned.")
+    @Order(17)
     public void findProductsByNonExistingCategoryAndAvailability() throws Exception {
         /**
          * Find products belonging to a given category and with availability
@@ -1034,13 +979,9 @@ public class ProductsControllerTest {
 			.andExpect(content().json(res, true));
     }
 
-    /**
-     * It tests finding all products
-     *
-     * @throws Exception
-     */
     @Test
-    @Order(17)
+    @DisplayName("When GET on /products. Then HTTP Status OK (200) and 21 products are returned.")
+    @Order(18)
     public void findAllProducts() throws Exception {
         /**
          * Find all products
