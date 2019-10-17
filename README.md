@@ -1,4 +1,4 @@
-# Product Dashboard - Spring Boot REST api
+# Product Dashboard - Spring Boot REST API, OAuth2 JWT, JUnit5
 
 [![Build Status](https://travis-ci.org/fabri1983/product_dashboard.svg?branch=master)](https://travis-ci.org/fabri1983/product_dashboard?branch=master)
 &nbsp;&nbsp;&nbsp;&nbsp;
