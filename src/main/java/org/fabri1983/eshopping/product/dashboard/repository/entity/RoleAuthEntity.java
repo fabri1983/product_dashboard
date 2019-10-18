@@ -1,5 +1,7 @@
 package org.fabri1983.eshopping.product.dashboard.repository.entity;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -36,8 +38,7 @@ public class RoleAuthEntity extends BaseEntityAutoIncrement {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((roleName == null) ? 0 : roleName.hashCode());
+		result = prime * result + Objects.hash(description, roleName);
 		return result;
 	}
 
@@ -50,17 +51,7 @@ public class RoleAuthEntity extends BaseEntityAutoIncrement {
 		if (getClass() != obj.getClass())
 			return false;
 		RoleAuthEntity other = (RoleAuthEntity) obj;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		if (roleName == null) {
-			if (other.roleName != null)
-				return false;
-		} else if (!roleName.equals(other.roleName))
-			return false;
-		return true;
+		return Objects.equals(description, other.description) && Objects.equals(roleName, other.roleName);
 	}
 
 }

@@ -2,6 +2,7 @@ package org.fabri1983.eshopping.product.dashboard.repository.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -90,13 +91,7 @@ public abstract class BaseEntity implements Serializable, IFunctional {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((createdOn == null) ? 0 : createdOn.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((version == null) ? 0 : version.hashCode());
-		result = prime * result + ((modifiedAt == null) ? 0 : modifiedAt.hashCode());
-		return result;
+		return Objects.hash(createdOn, id, modifiedAt, version);
 	}
 
 	@Override
@@ -108,27 +103,8 @@ public abstract class BaseEntity implements Serializable, IFunctional {
 		if (getClass() != obj.getClass())
 			return false;
 		BaseEntity other = (BaseEntity) obj;
-		if (createdOn == null) {
-			if (other.createdOn != null)
-				return false;
-		} else if (!createdOn.equals(other.createdOn))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (version == null) {
-			if (other.version != null)
-				return false;
-		} else if (!version.equals(other.version))
-			return false;
-		if (modifiedAt == null) {
-			if (other.modifiedAt != null)
-				return false;
-		} else if (!modifiedAt.equals(other.modifiedAt))
-			return false;
-		return true;
+		return Objects.equals(createdOn, other.createdOn) && Objects.equals(id, other.id)
+				&& Objects.equals(modifiedAt, other.modifiedAt) && Objects.equals(version, other.version);
 	}
-    
+
 }

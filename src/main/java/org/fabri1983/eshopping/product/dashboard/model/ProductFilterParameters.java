@@ -42,5 +42,22 @@ public class ProductFilterParameters {
 	public boolean hasOnlyCategoryAndAvailability() {
 		return hasCategory() && hasAvailability();
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(availability, category);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProductFilterParameters other = (ProductFilterParameters) obj;
+		return Objects.equals(availability, other.availability) && Objects.equals(category, other.category);
+	}
 	
 }

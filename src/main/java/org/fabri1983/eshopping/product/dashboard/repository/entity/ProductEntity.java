@@ -1,5 +1,7 @@
 package org.fabri1983.eshopping.product.dashboard.repository.entity;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -84,11 +86,8 @@ public class ProductEntity extends BaseEntity {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + ((availability == null) ? 0 : availability.hashCode());
-		result = prime * result + ((category == null) ? 0 : category.hashCode());
-		result = prime * result + ((discountedPrice == null) ? 0 : discountedPrice.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((retailPrice == null) ? 0 : retailPrice.hashCode());
+		result = prime * result
+				+ Objects.hash(availability, category, discountedPercentage, discountedPrice, name, retailPrice);
 		return result;
 	}
 
@@ -101,32 +100,10 @@ public class ProductEntity extends BaseEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		ProductEntity other = (ProductEntity) obj;
-		if (availability == null) {
-			if (other.availability != null)
-				return false;
-		} else if (!availability.equals(other.availability))
-			return false;
-		if (category == null) {
-			if (other.category != null)
-				return false;
-		} else if (!category.equals(other.category))
-			return false;
-		if (discountedPrice == null) {
-			if (other.discountedPrice != null)
-				return false;
-		} else if (!discountedPrice.equals(other.discountedPrice))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (retailPrice == null) {
-			if (other.retailPrice != null)
-				return false;
-		} else if (!retailPrice.equals(other.retailPrice))
-			return false;
-		return true;
+		return Objects.equals(availability, other.availability) && Objects.equals(category, other.category)
+				&& Objects.equals(discountedPercentage, other.discountedPercentage)
+				&& Objects.equals(discountedPrice, other.discountedPrice) && Objects.equals(name, other.name)
+				&& Objects.equals(retailPrice, other.retailPrice);
 	}
 
 }

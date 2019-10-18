@@ -1,6 +1,7 @@
 package org.fabri1983.eshopping.product.dashboard.repository.entity;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -82,11 +83,7 @@ public class UserAuthEntity extends BaseEntityAutoIncrement {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		result = prime * result + Objects.hash(firstName, lastName, password, roles, username);
 		return result;
 	}
 
@@ -99,32 +96,9 @@ public class UserAuthEntity extends BaseEntityAutoIncrement {
 		if (getClass() != obj.getClass())
 			return false;
 		UserAuthEntity other = (UserAuthEntity) obj;
-		if (firstName == null) {
-			if (other.firstName != null)
-				return false;
-		} else if (!firstName.equals(other.firstName))
-			return false;
-		if (lastName == null) {
-			if (other.lastName != null)
-				return false;
-		} else if (!lastName.equals(other.lastName))
-			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
-		if (roles == null) {
-			if (other.roles != null)
-				return false;
-		} else if (!roles.equals(other.roles))
-			return false;
-		if (username == null) {
-			if (other.username != null)
-				return false;
-		} else if (!username.equals(other.username))
-			return false;
-		return true;
+		return Objects.equals(firstName, other.firstName) && Objects.equals(lastName, other.lastName)
+				&& Objects.equals(password, other.password) && Objects.equals(roles, other.roles)
+				&& Objects.equals(username, other.username);
 	}
 
 }
