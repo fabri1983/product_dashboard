@@ -1,21 +1,12 @@
 package org.fabri1983.eshopping.product.dashboard.model;
 
-public class ProductUpdate {
+public class ProductUpdate extends BaseModel {
 
-	private Long id;
 	private Double retailPrice;
 	private Double discountedPrice;
 	private Boolean availability;
 
 	public ProductUpdate() {
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public Double getRetailPrice() {

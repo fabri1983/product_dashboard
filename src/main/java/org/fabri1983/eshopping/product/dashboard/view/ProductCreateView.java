@@ -2,10 +2,8 @@ package org.fabri1983.eshopping.product.dashboard.view;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ProductCreateView {
+public class ProductCreateView extends BaseView {
 
-	@JsonProperty("id")
-	private Long id;
 	@JsonProperty("name")
 	private String name;
 	@JsonProperty("category")
@@ -30,14 +28,6 @@ public class ProductCreateView {
 		return new ProductCreateViewBuilder();
 	}
 	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -91,6 +81,11 @@ public class ProductCreateView {
 			return this;
 		}
 
+		public ProductCreateViewBuilder version(Long version) {
+			prodView.setVersion(version);
+			return this;
+		}
+		
 		public ProductCreateViewBuilder name(String name) {
 			prodView.setName(name);
 			return this;

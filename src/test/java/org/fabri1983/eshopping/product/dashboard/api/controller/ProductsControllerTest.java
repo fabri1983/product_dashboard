@@ -125,6 +125,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(1L)
+        		.version(1L)
         		.name("Dressing Gown")
         		.category("Full Body Outfits")
         		.retailPrice(303.0)
@@ -136,6 +137,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(2L)
+        		.version(1L)
         		.name("Shoes")
         		.category("Footwear")
         		.retailPrice(150.0)
@@ -147,6 +149,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(3L)
+        		.version(1L)
         		.name("Nightgown")
         		.category("Full Body Outfits")
         		.retailPrice(307.0)
@@ -158,6 +161,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(4L)
+        		.version(1L)
         		.name("Boots")
         		.category("Footwear")
         		.retailPrice(162.0)
@@ -169,6 +173,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(5L)
+        		.version(1L)
         		.name("Ball Gown")
         		.category("Full Body Outfits")
         		.retailPrice(337.00)
@@ -180,6 +185,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(6L)
+        		.version(1L)
         		.name("Shawl")
         		.category("Accessories")
         		.retailPrice(283.0)
@@ -191,6 +197,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(7L)
+        		.version(1L)
         		.name("Belt")
         		.category("Accessories")
         		.retailPrice(471.0)
@@ -202,6 +209,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(8L)
+        		.version(1L)
         		.name("Kaftan")
         		.category("Accessories")
         		.retailPrice(237.0)
@@ -213,6 +221,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(9L)
+        		.version(1L)
         		.name("Overalls")
         		.category("Full Body Outfits")
         		.retailPrice(374.0)
@@ -224,6 +233,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(10L)
+        		.version(1L)
         		.name("Cufflinks")
         		.category("Accessories")
         		.retailPrice(284.0)
@@ -235,6 +245,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(11L)
+        		.version(1L)
         		.name("Cargos")
         		.category("Bottoms")
         		.retailPrice(498.0)
@@ -246,6 +257,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(12L)
+        		.version(1L)
         		.name("Poncho")
         		.category("Accessories")
         		.retailPrice(280.0)
@@ -257,6 +269,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(13L)
+        		.version(1L)
         		.name("Cummerbund")
         		.category("Accessories")
         		.retailPrice(435.0)
@@ -268,6 +281,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(14L)
+        		.version(1L)
         		.name("Dress")
         		.category("Full Body Outfits")
         		.retailPrice(175.0)
@@ -279,6 +293,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(15L)
+        		.version(1L)
         		.name("Trainers")
         		.category("Footwear")
         		.retailPrice(228.0)
@@ -290,6 +305,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(16L)
+        		.version(1L)
         		.name("Tracksuit")
         		.category("Full Body Outfits")
         		.retailPrice(471.0)
@@ -301,6 +317,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(17L)
+        		.version(1L)
         		.name("Tailcoat")
         		.category("Full Body Outfits")
         		.retailPrice(307.0)
@@ -312,6 +329,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(18L)
+        		.version(1L)
         		.name("Vest")
         		.category("Tops")
         		.retailPrice(446.0)
@@ -323,6 +341,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(19L)
+        		.version(1L)
         		.name("Suit")
         		.category("Full Body Outfits")
         		.retailPrice(158.0)
@@ -334,6 +353,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(20L)
+        		.version(1L)
         		.name("Catsuit")
         		.category("Full Body Outfits")
         		.retailPrice(158.0)
@@ -345,6 +365,7 @@ public class ProductsControllerTest {
         addProduct(
         	ProductCreateView.builder()
         		.id(21L)
+        		.version(1L)
         		.name("Dungarees")
         		.category("Full Body Outfits")
         		.retailPrice(437.0)
@@ -373,6 +394,7 @@ public class ProductsControllerTest {
     	 */ 
         ProductCreateView prod = ProductCreateView.builder()
 			.id(1L)
+    		.version(1L)
 			.name("Dressing Gown")
 			.category("Underwear")
 			.retailPrice(303.0)
@@ -400,16 +422,18 @@ public class ProductsControllerTest {
          *
          * The request body is:
          * {
-         *     "retail_price": 325.45
+         *     "retail_price": 325.45,
+         *     "version": 1
          * }
          */
-        String json = "{\"retail_price\": 325.45}";
+        String json = "{\"retail_price\": 325.45, \"version\": 1}";
 
         /**
          * The response body is:
          */
         ProductCreateView expectedProd = ProductCreateView.builder()
     			.id(6L)
+        		.version(2L)
     			.name("Shawl")
     			.category("Accessories")
     			.retailPrice(325.45)
@@ -438,16 +462,18 @@ public class ProductsControllerTest {
          *
          * The request body is:
          * {
-         *     "discounted_price": 227.2
+         *     "discounted_price": 227.2,
+         *     "version": 1
          * }
          */
-        String json = "{\"discounted_price\": 227.2}";
+        String json = "{\"discounted_price\": 227.2, \"version\": 1}";
 
         /**
          * The response body is:
          */
         ProductCreateView expectedProd = ProductCreateView.builder()
     			.id(10L)
+        		.version(2L)
     			.name("Cufflinks")
     			.category("Accessories")
     			.retailPrice(284.0)
@@ -476,16 +502,18 @@ public class ProductsControllerTest {
          *
          * The request body is:
          * {
-         *     "availability": false
+         *     "availability": false,
+         *     "version": 1
          * }
          */
-        String json = "{\"availability\": false}";
+        String json = "{\"availability\": false, \"version\": 1}";
 
         /**
          * The response body is:
          */
         ProductCreateView expectedProd = ProductCreateView.builder()
     			.id(2L)
+        		.version(2L)
     			.name("Shoes")
     			.category("Footwear")
     			.retailPrice(150.0)
@@ -515,16 +543,18 @@ public class ProductsControllerTest {
          * The request body is:
          * {
          *     "retail_price": 350.0,
-         *     "discounted_price": 283.5
+         *     "discounted_price": 283.5,
+         *     "version": 1
          * }
          */
-        String json = "{\"retail_price\": 350.0, \"discounted_price\": 283.5, \"availability\": true}";
+        String json = "{\"retail_price\": 350.0, \"discounted_price\": 283.5, \"availability\": true, \"version\": 1}";
 
         /**
          * The response body is:
          */
         ProductCreateView expectedProd = ProductCreateView.builder()
     			.id(12L)
+        		.version(2L)
     			.name("Poncho")
     			.category("Accessories")
     			.retailPrice(350.0)
@@ -555,16 +585,18 @@ public class ProductsControllerTest {
          * {
          *     "retail_price": 125.0,
          *     "discounted_price": 100.0,
-         *     "availability": false
+         *     "availability": false,
+         *     "version": 1
          * }
          */
-        String json = "{\"retail_price\": 125.0, \"discounted_price\": 100.0, \"availability\": false}";
+        String json = "{\"retail_price\": 125.0, \"discounted_price\": 100.0, \"availability\": false, \"version\": 1}";
 
         /**
          * The response body is:
          */
         ProductCreateView expectedProd = ProductCreateView.builder()
     			.id(19L)
+        		.version(2L)
     			.name("Suit")
     			.category("Full Body Outfits")
     			.retailPrice(125.0)
@@ -599,16 +631,18 @@ public class ProductsControllerTest {
          * The request body is:
          * {
          *     "discounted_price": 200.0,
-         *     "availability": false
+         *     "availability": false,
+         *     "version": 1
          * }
          */
-        String json = "{\"discounted_price\": 200.0, \"availability\": false}";
+        String json = "{\"discounted_price\": 200.0, \"availability\": false, \"version\": 1}";
 
         /**
          * The response body is:
          */
         ProductCreateView expectedProd = ProductCreateView.builder()
     			.id(20L)
+        		.version(2L)
     			.name("Catsuit")
     			.category("Full Body Outfits")
     			.retailPrice(158.0)
@@ -639,16 +673,18 @@ public class ProductsControllerTest {
          * {
          *     "retail_price": 500.0,
          *     "discounted_price": 450.0,
-         *     "availability": false
+         *     "availability": false,
+         *     "version": 1
          * }
          */
-        String json = "{\"retail_price\": 500.0, \"discounted_price\": 450.0, \"availability\": false}";
+        String json = "{\"retail_price\": 500.0, \"discounted_price\": 450.0, \"availability\": false, \"version\": 1}";
 
         /**
          * The response body is:
          */
         ProductCreateView expectedProd = ProductCreateView.builder()
     			.id(13L)
+        		.version(2L)
     			.name("Cummerbund")
     			.category("Accessories")
     			.retailPrice(500.0)
@@ -677,10 +713,11 @@ public class ProductsControllerTest {
          *
          * The request body is:
          * {
-         *     "availability": true
+         *     "availability": true,
+         *     "version": 1
          * }
          */
-        String json = "{\"availability\": true}";
+        String json = "{\"availability\": true, \"version\": 1}";
 
         mockMvc
         	.perform(
@@ -704,6 +741,7 @@ public class ProductsControllerTest {
          */
         ProductCreateView expectedProd = ProductCreateView.builder()
     			.id(2L)
+        		.version(2L)
     			.name("Shoes")
     			.category("Footwear")
     			.retailPrice(150.0)
@@ -749,6 +787,7 @@ public class ProductsControllerTest {
         expectedProds.add(
         		ProductCreateView.builder()
 	    			.id(8L)
+	        		.version(1L)
 	    			.name("Kaftan")
 	    			.category("Accessories")
 	    			.retailPrice(237.0)
@@ -758,6 +797,7 @@ public class ProductsControllerTest {
         expectedProds.add(
 	    		ProductCreateView.builder()
 	    			.id(10L)
+	        		.version(2L)
 	    			.name("Cufflinks")
 	    			.category("Accessories")
 	    			.retailPrice(284.0)
@@ -767,6 +807,7 @@ public class ProductsControllerTest {
         expectedProds.add(
 	    		ProductCreateView.builder()
 	    			.id(6L)
+	        		.version(2L)
 	    			.name("Shawl")
 	    			.category("Accessories")
 	    			.retailPrice(325.45)
@@ -776,6 +817,7 @@ public class ProductsControllerTest {
         expectedProds.add(
 	    		ProductCreateView.builder()
 	    			.id(12L)
+	        		.version(2L)
 	    			.name("Poncho")
 	    			.category("Accessories")
 	    			.retailPrice(350.0)
@@ -785,6 +827,7 @@ public class ProductsControllerTest {
         expectedProds.add(
 	    		ProductCreateView.builder()
 	    			.id(7L)
+	        		.version(1L)
 	    			.name("Belt")
 	    			.category("Accessories")
 	    			.retailPrice(471.0)
@@ -794,6 +837,7 @@ public class ProductsControllerTest {
         expectedProds.add(
 	    		ProductCreateView.builder()
 	    			.id(13L)
+	        		.version(2L)
 	    			.name("Cummerbund")
 	    			.category("Accessories")
 	    			.retailPrice(500.0)
@@ -838,59 +882,64 @@ public class ProductsControllerTest {
         /**
          * Find products belonging to a given category and with availability
          *
-         * The request response is:
-         * [
-         *     {
-         *         "id": 14,
-         *         "name": "Dress",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 175.0,
-         *         "discounted_price": 140.0,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 5,
-         *         "name": "Ball Gown",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 337.0,
-         *         "discounted_price": 272.97,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 1,
-         *         "name": "Dressing Gown",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 303.0,
-         *         "discounted_price": 251.49,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 3,
-         *         "name": "Nightgown",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 307.0,
-         *         "discounted_price": 254.81,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 17,
-         *         "name": "Tailcoat",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 307.0,
-         *         "discounted_price": 254.81,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 9,
-         *         "name": "Overalls",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 374.0,
-         *         "discounted_price": 321.64,
-         *         "availability": true
-         *     }
-         * ]
+         * The response is:
          */
-        String res = "[{\"id\": 14, \"name\": \"Dress\", \"category\": \"Full Body Outfits\", \"retail_price\": 175.0, \"discounted_price\": 140.0, \"availability\": true}, {\"id\": 5, \"name\": \"Ball Gown\", \"category\": \"Full Body Outfits\", \"retail_price\": 337.0, \"discounted_price\": 272.97, \"availability\": true}, {\"id\": 1, \"name\": \"Dressing Gown\", \"category\": \"Full Body Outfits\", \"retail_price\": 303.0, \"discounted_price\": 251.49, \"availability\": true}, {\"id\": 3, \"name\": \"Nightgown\", \"category\": \"Full Body Outfits\", \"retail_price\": 307.0, \"discounted_price\": 254.81, \"availability\": true}, {\"id\": 17, \"name\": \"Tailcoat\", \"category\": \"Full Body Outfits\", \"retail_price\": 307.0, \"discounted_price\": 254.81, \"availability\": true}, {\"id\": 9, \"name\": \"Overalls\", \"category\": \"Full Body Outfits\", \"retail_price\": 374.0, \"discounted_price\": 321.64, \"availability\": true}]";
+        String res = "[" + 
+        		"    {" + 
+        		"        \"id\": 14," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Dress\"," + 
+        		"        \"category\": \"Full Body Outfits\"," + 
+        		"        \"retail_price\": 175.0," + 
+        		"        \"discounted_price\": 140.0," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 5," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Ball Gown\"," + 
+        		"        \"category\": \"Full Body Outfits\"," + 
+        		"        \"retail_price\": 337.0," + 
+        		"        \"discounted_price\": 272.97," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 1," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Dressing Gown\"," + 
+        		"        \"category\": \"Full Body Outfits\"," + 
+        		"        \"retail_price\": 303.0," + 
+        		"        \"discounted_price\": 251.49," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 3," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Nightgown\"," + 
+        		"        \"category\": \"Full Body Outfits\"," + 
+        		"        \"retail_price\": 307.0," + 
+        		"        \"discounted_price\": 254.81," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 17," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Tailcoat\"," + 
+        		"        \"category\": \"Full Body Outfits\"," + 
+        		"        \"retail_price\": 307.0," + 
+        		"        \"discounted_price\": 254.81," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 9," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Overalls\"," + 
+        		"        \"category\": \"Full Body Outfits\"," + 
+        		"        \"retail_price\": 374.0," + 
+        		"        \"discounted_price\": 321.64," + 
+        		"        \"availability\": true" + 
+        		"    }" + 
+        		"]";
 
         mockMvc.perform(
         		get("/products?category=Full%20Body%20Outfits&availability=1")
@@ -909,43 +958,46 @@ public class ProductsControllerTest {
 	    /**
 	     * Find products belonging to a given category and with availability
 	     *
-	     * The request response is:
-	     * [
-	     *     {
-	     *         "id": 19,
-	     *         "name": "Suit",
-	     *         "category": "Full Body Outfits",
-	     *         "retail_price": 125.0,
-	     *         "discounted_price": 100.0,
-	     *         "availability": false
-	     *     },
-	     *     {
-	     *         "id": 21,
-	     *         "name": "Dungarees",
-	     *         "category": "Full Body Outfits",
-	     *         "retail_price": 437.0,
-	     *         "discounted_price": 362.71,
-	     *         "availability": false
-	     *     },
-	     *     {
-	     *         "id": 16,
-	     *         "name": "Tracksuit",
-	     *         "category": "Full Body Outfits",
-	     *         "retail_price": 471.0,
-	     *         "discounted_price": 423.9,
-	     *         "availability": false
-	     *     },
-	     *     {
-	     *         "id": 20,
-	     *         "name": "Catsuit",
-	     *         "category": "Full Body Outfits",
-	     *         "retail_price": 158.0,
-	     *         "discounted_price": 200.0,
-	     *         "availability": false
-	     *     }
-	     * ]
+	     * The response is:
 	     */
-	    String res = "[{\"id\": 19, \"name\": \"Suit\", \"category\": \"Full Body Outfits\", \"retail_price\": 125.0, \"discounted_price\": 100.0, \"availability\": false}, {\"id\": 21, \"name\": \"Dungarees\", \"category\": \"Full Body Outfits\", \"retail_price\": 437.0, \"discounted_price\": 362.71, \"availability\": false}, {\"id\": 16, \"name\": \"Tracksuit\", \"category\": \"Full Body Outfits\", \"retail_price\": 471.0, \"discounted_price\": 423.9, \"availability\": false}, {\"id\": 20, \"name\": \"Catsuit\", \"category\": \"Full Body Outfits\", \"retail_price\": 158.0, \"discounted_price\": 200.0, \"availability\": false}]";
+	    String res = "[" + 
+	    		"    {" + 
+	    		"        \"id\": 19," + 
+	    		"        \"version\": 2," + 
+	    		"        \"name\": \"Suit\"," + 
+	    		"        \"category\": \"Full Body Outfits\"," + 
+	    		"        \"retail_price\": 125.0," + 
+	    		"        \"discounted_price\": 100.0," + 
+	    		"        \"availability\": false" + 
+	    		"    }," + 
+	    		"    {" + 
+	    		"        \"id\": 21," + 
+	    		"        \"version\": 1," + 
+	    		"        \"name\": \"Dungarees\"," + 
+	    		"        \"category\": \"Full Body Outfits\"," + 
+	    		"        \"retail_price\": 437.0," + 
+	    		"        \"discounted_price\": 362.71," + 
+	    		"        \"availability\": false" + 
+	    		"    }," + 
+	    		"    {" + 
+	    		"        \"id\": 16," + 
+	    		"        \"version\": 1," + 
+	    		"        \"name\": \"Tracksuit\"," + 
+	    		"        \"category\": \"Full Body Outfits\"," + 
+	    		"        \"retail_price\": 471.0," + 
+	    		"        \"discounted_price\": 423.9," + 
+	    		"        \"availability\": false" + 
+	    		"    }," + 
+	    		"    {" + 
+	    		"        \"id\": 20," + 
+	    		"        \"version\": 2," + 
+	    		"        \"name\": \"Catsuit\"," + 
+	    		"        \"category\": \"Full Body Outfits\"," + 
+	    		"        \"retail_price\": 158.0," + 
+	    		"        \"discounted_price\": 200.0," + 
+	    		"        \"availability\": false" + 
+	    		"    }" + 
+	    		"]";
 	
 		mockMvc
 			.perform(
@@ -986,179 +1038,199 @@ public class ProductsControllerTest {
         /**
          * Find all products
          *
-         * The request response is:
-         * [
-         *     {
-         *         "id": 1,
-         *         "name": "Dressing Gown",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 303.0,
-         *         "discounted_price": 251.49,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 2,
-         *         "name": "Shoes",
-         *         "category": "Footwear",
-         *         "retail_price": 150.0,
-         *         "discounted_price": 123.0,
-         *         "availability": false
-         *     },
-         *     {
-         *         "id": 3,
-         *         "name": "Nightgown",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 307.0,
-         *         "discounted_price": 254.81,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 4,
-         *         "name": "Boots",
-         *         "category": "Footwear",
-         *         "retail_price": 162.0,
-         *         "discounted_price": 132.84,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 5,
-         *         "name": "Ball Gown",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 337.0,
-         *         "discounted_price": 272.97,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 6,
-         *         "name": "Shawl",
-         *         "category": "Accessories",
-         *         "retail_price": 325.45,
-         *         "discounted_price": 260.36,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 7,
-         *         "name": "Belt",
-         *         "category": "Accessories",
-         *         "retail_price": 471.0,
-         *         "discounted_price": 419.19,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 8,
-         *         "name": "Kaftan",
-         *         "category": "Accessories",
-         *         "retail_price": 237.0,
-         *         "discounted_price": 215.67,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 9,
-         *         "name": "Overalls",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 374.0,
-         *         "discounted_price": 321.64,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 10,
-         *         "name": "Cufflinks",
-         *         "category": "Accessories",
-         *         "retail_price": 284.0,
-         *         "discounted_price": 227.2,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 11,
-         *         "name": "Cargos",
-         *         "category": "Bottoms",
-         *         "retail_price": 498.0,
-         *         "discounted_price": 428.28,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 12,
-         *         "name": "Poncho",
-         *         "category": "Accessories",
-         *         "retail_price": 350.0,
-         *         "discounted_price": 283.5,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 13,
-         *         "name": "Cummerbund",
-         *         "category": "Accessories",
-         *         "retail_price": 500.0,
-         *         "discounted_price": 450.0,
-         *         "availability": false
-         *     },
-         *     {
-         *         "id": 14,
-         *         "name": "Dress",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 175.0,
-         *         "discounted_price": 140.0,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 15,
-         *         "name": "Trainers",
-         *         "category": "Footwear",
-         *         "retail_price": 228.0,
-         *         "discounted_price": 184.68,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 16,
-         *         "name": "Tracksuit",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 471.0,
-         *         "discounted_price": 423.9,
-         *         "availability": false
-         *     },
-         *     {
-         *         "id": 17,
-         *         "name": "Tailcoat",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 307.0,
-         *         "discounted_price": 254.81,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 18,
-         *         "name": "Vest",
-         *         "category": "Tops",
-         *         "retail_price": 446.0,
-         *         "discounted_price": 392.48,
-         *         "availability": true
-         *     },
-         *     {
-         *         "id": 19,
-         *         "name": "Suit",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 125.0,
-         *         "discounted_price": 100.0,
-         *         "availability": false
-         *     },
-         *     {
-         *         "id": 20,
-         *         "name": "Catsuit",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 158.0,
-         *         "discounted_price": 200.0,
-         *         "availability": false
-         *     },
-         *     {
-         *         "id": 21,
-         *         "name": "Dungarees",
-         *         "category": "Full Body Outfits",
-         *         "retail_price": 437.0,
-         *         "discounted_price": 362.71,
-         *         "availability": false
-         *     }
-         * ]
+         * The response is:
          */
-        String res = "[{\"id\": 1, \"name\": \"Dressing Gown\", \"category\": \"Full Body Outfits\", \"retail_price\": 303.0, \"discounted_price\": 251.49, \"availability\": true}, {\"id\": 2, \"name\": \"Shoes\", \"category\": \"Footwear\", \"retail_price\": 150.0, \"discounted_price\": 123.0, \"availability\": false}, {\"id\": 3, \"name\": \"Nightgown\", \"category\": \"Full Body Outfits\", \"retail_price\": 307.0, \"discounted_price\": 254.81, \"availability\": true}, {\"id\": 4, \"name\": \"Boots\", \"category\": \"Footwear\", \"retail_price\": 162.0, \"discounted_price\": 132.84, \"availability\": true}, {\"id\": 5, \"name\": \"Ball Gown\", \"category\": \"Full Body Outfits\", \"retail_price\": 337.0, \"discounted_price\": 272.97, \"availability\": true}, {\"id\": 6, \"name\": \"Shawl\", \"category\": \"Accessories\", \"retail_price\": 325.45, \"discounted_price\": 260.36, \"availability\": true}, {\"id\": 7, \"name\": \"Belt\", \"category\": \"Accessories\", \"retail_price\": 471.0, \"discounted_price\": 419.19, \"availability\": true}, {\"id\": 8, \"name\": \"Kaftan\", \"category\": \"Accessories\", \"retail_price\": 237.0, \"discounted_price\": 215.67, \"availability\": true}, {\"id\": 9, \"name\": \"Overalls\", \"category\": \"Full Body Outfits\", \"retail_price\": 374.0, \"discounted_price\": 321.64, \"availability\": true}, {\"id\": 10, \"name\": \"Cufflinks\", \"category\": \"Accessories\", \"retail_price\": 284.0, \"discounted_price\": 227.2, \"availability\": true}, {\"id\": 11, \"name\": \"Cargos\", \"category\": \"Bottoms\", \"retail_price\": 498.0, \"discounted_price\": 428.28, \"availability\": true}, {\"id\": 12, \"name\": \"Poncho\", \"category\": \"Accessories\", \"retail_price\": 350.0, \"discounted_price\": 283.5, \"availability\": true}, {\"id\": 13, \"name\": \"Cummerbund\", \"category\": \"Accessories\", \"retail_price\": 500.0, \"discounted_price\": 450.0, \"availability\": false}, {\"id\": 14, \"name\": \"Dress\", \"category\": \"Full Body Outfits\", \"retail_price\": 175.0, \"discounted_price\": 140.0, \"availability\": true}, {\"id\": 15, \"name\": \"Trainers\", \"category\": \"Footwear\", \"retail_price\": 228.0, \"discounted_price\": 184.68, \"availability\": true}, {\"id\": 16, \"name\": \"Tracksuit\", \"category\": \"Full Body Outfits\", \"retail_price\": 471.0, \"discounted_price\": 423.9, \"availability\": false}, {\"id\": 17, \"name\": \"Tailcoat\", \"category\": \"Full Body Outfits\", \"retail_price\": 307.0, \"discounted_price\": 254.81, \"availability\": true}, {\"id\": 18, \"name\": \"Vest\", \"category\": \"Tops\", \"retail_price\": 446.0, \"discounted_price\": 392.48, \"availability\": true}, {\"id\": 19, \"name\": \"Suit\", \"category\": \"Full Body Outfits\", \"retail_price\": 125.0, \"discounted_price\": 100.0, \"availability\": false}, {\"id\": 20, \"name\": \"Catsuit\", \"category\": \"Full Body Outfits\", \"retail_price\": 158.0, \"discounted_price\": 200.0, \"availability\": false}, {\"id\": 21, \"name\": \"Dungarees\", \"category\": \"Full Body Outfits\", \"retail_price\": 437.0, \"discounted_price\": 362.71, \"availability\": false}]";
+        String res = "[" + 
+        		"    {" + 
+        		"        \"id\": 1," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Dressing Gown\"," + 
+        		"        \"category\": \"Full Body Outfits\"," + 
+        		"        \"retail_price\": 303.0," + 
+        		"        \"discounted_price\": 251.49," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 2," + 
+        		"        \"version\": 2," + 
+        		"        \"name\": \"Shoes\"," + 
+        		"        \"category\": \"Footwear\"," + 
+        		"        \"retail_price\": 150.0," + 
+        		"        \"discounted_price\": 123.0," + 
+        		"        \"availability\": false" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 3," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Nightgown\"," + 
+        		"        \"category\": \"Full Body Outfits\"," + 
+        		"        \"retail_price\": 307.0," + 
+        		"        \"discounted_price\": 254.81," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 4," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Boots\"," + 
+        		"        \"category\": \"Footwear\"," + 
+        		"        \"retail_price\": 162.0," + 
+        		"        \"discounted_price\": 132.84," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 5," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Ball Gown\"," + 
+        		"        \"category\": \"Full Body Outfits\"," + 
+        		"        \"retail_price\": 337.0," + 
+        		"        \"discounted_price\": 272.97," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 6," + 
+        		"        \"version\": 2," + 
+        		"        \"name\": \"Shawl\"," + 
+        		"        \"category\": \"Accessories\"," + 
+        		"        \"retail_price\": 325.45," + 
+        		"        \"discounted_price\": 260.36," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 7," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Belt\"," + 
+        		"        \"category\": \"Accessories\"," + 
+        		"        \"retail_price\": 471.0," + 
+        		"        \"discounted_price\": 419.19," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 8," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Kaftan\"," + 
+        		"        \"category\": \"Accessories\"," + 
+        		"        \"retail_price\": 237.0," + 
+        		"        \"discounted_price\": 215.67," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 9," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Overalls\"," + 
+        		"        \"category\": \"Full Body Outfits\"," + 
+        		"        \"retail_price\": 374.0," + 
+        		"        \"discounted_price\": 321.64," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 10," + 
+        		"        \"version\": 2," + 
+        		"        \"name\": \"Cufflinks\"," + 
+        		"        \"category\": \"Accessories\"," + 
+        		"        \"retail_price\": 284.0," + 
+        		"        \"discounted_price\": 227.2," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 11," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Cargos\"," + 
+        		"        \"category\": \"Bottoms\"," + 
+        		"        \"retail_price\": 498.0," + 
+        		"        \"discounted_price\": 428.28," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 12," + 
+        		"        \"version\": 2," + 
+        		"        \"name\": \"Poncho\"," + 
+        		"        \"category\": \"Accessories\"," + 
+        		"        \"retail_price\": 350.0," + 
+        		"        \"discounted_price\": 283.5," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 13," + 
+        		"        \"version\": 2," + 
+        		"        \"name\": \"Cummerbund\"," + 
+        		"        \"category\": \"Accessories\"," + 
+        		"        \"retail_price\": 500.0," + 
+        		"        \"discounted_price\": 450.0," + 
+        		"        \"availability\": false" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 14," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Dress\"," + 
+        		"        \"category\": \"Full Body Outfits\"," + 
+        		"        \"retail_price\": 175.0," + 
+        		"        \"discounted_price\": 140.0," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 15," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Trainers\"," + 
+        		"        \"category\": \"Footwear\"," + 
+        		"        \"retail_price\": 228.0," + 
+        		"        \"discounted_price\": 184.68," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 16," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Tracksuit\"," + 
+        		"        \"category\": \"Full Body Outfits\"," + 
+        		"        \"retail_price\": 471.0," + 
+        		"        \"discounted_price\": 423.9," + 
+        		"        \"availability\": false" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 17," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Tailcoat\"," + 
+        		"        \"category\": \"Full Body Outfits\"," + 
+        		"        \"retail_price\": 307.0," + 
+        		"        \"discounted_price\": 254.81," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 18," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Vest\"," + 
+        		"        \"category\": \"Tops\"," + 
+        		"        \"retail_price\": 446.0," + 
+        		"        \"discounted_price\": 392.48," + 
+        		"        \"availability\": true" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 19," + 
+        		"        \"version\": 2," + 
+        		"        \"name\": \"Suit\"," + 
+        		"        \"category\": \"Full Body Outfits\"," + 
+        		"        \"retail_price\": 125.0," + 
+        		"        \"discounted_price\": 100.0," + 
+        		"        \"availability\": false" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 20," + 
+        		"        \"version\": 2," + 
+        		"        \"name\": \"Catsuit\"," + 
+        		"        \"category\": \"Full Body Outfits\"," + 
+        		"        \"retail_price\": 158.0," + 
+        		"        \"discounted_price\": 200.0," + 
+        		"        \"availability\": false" + 
+        		"    }," + 
+        		"    {" + 
+        		"        \"id\": 21," + 
+        		"        \"version\": 1," + 
+        		"        \"name\": \"Dungarees\"," + 
+        		"        \"category\": \"Full Body Outfits\"," + 
+        		"        \"retail_price\": 437.0," + 
+        		"        \"discounted_price\": 362.71," + 
+        		"        \"availability\": false" + 
+        		"    }" + 
+        		"]";
 
         mockMvc
         	.perform(

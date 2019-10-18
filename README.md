@@ -23,6 +23,7 @@ You will be graded on whether your application performs data retrieval and manip
 Each product is a JSON entry with the following keys:
 
 - id: Unique identifier of the product.
+- version: Used to keep track of the product object we are trying to create/update to avoid conflicts with updated versions by other users.
 - name: Name of the product.
 - category: Category of the product.
 - retail_price: The recommended selling price of the product. The price is given up to two places of decimal.
@@ -33,6 +34,7 @@ Sample Product JSON:
  ```json
 {
   "id": 1,
+  "version": 1,
   "name": "Waterproof",
   "category": "Coats and Jackets",
   "retail_price": 274.0,

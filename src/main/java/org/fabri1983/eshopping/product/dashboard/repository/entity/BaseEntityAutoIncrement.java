@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -16,45 +18,46 @@ import org.fabri1983.eshopping.product.dashboard.repository.functional.IFunction
 
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class BaseEntity implements Serializable, IFunctional {
+public abstract class BaseEntityAutoIncrement implements Serializable, IFunctional {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	protected Long id;
 
 	@Version
 	@Column(name = "version", nullable = false)
 	protected Long version;
-	
+
 	@Column(name = "createdOn", nullable = false,
 			// once the entity is persisted this field can not be modified
 			updatable = false)
 	protected LocalDateTime createdOn;
-	
-	@Column(name = "modifiedAt",  nullable = false)
-    protected LocalDateTime modifiedAt;
 
-    @PrePersist
-    protected void prePersist() {
-    	LocalDateTime now = now();
+	@Column(name = "modifiedAt", nullable = false)
+	protected LocalDateTime modifiedAt;
+
+	@PrePersist
+	protected void prePersist() {
+		LocalDateTime now = now();
 		createdOn = now;
-        modifiedAt = now;
-        if (version == null) {
+		modifiedAt = now;
+		if (version == null) {
     		version = Long.valueOf(1);
 		}
-    }
+	}
 
-    @PreUpdate
-    protected void preUpdate() {
-    	modifiedAt = now();
-    	if (version == null) {
+	@PreUpdate
+	protected void preUpdate() {
+		modifiedAt = now();
+		if (version == null) {
     		version = Long.valueOf(1);
     	} else {
     		version = Long.valueOf(version.longValue() + 1);
     	}
-    }
+	}
 
 	public Long getId() {
 		return id;
@@ -107,7 +110,7 @@ public abstract class BaseEntity implements Serializable, IFunctional {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BaseEntity other = (BaseEntity) obj;
+		BaseEntityAutoIncrement other = (BaseEntityAutoIncrement) obj;
 		if (createdOn == null) {
 			if (other.createdOn != null)
 				return false;
@@ -130,5 +133,5 @@ public abstract class BaseEntity implements Serializable, IFunctional {
 			return false;
 		return true;
 	}
-    
+
 }

@@ -26,7 +26,7 @@ public class ProductBusiness implements ProductBusinessContract {
 	@Override
 	public Product findById(Long productId) {
 		Product product = productRepository.findById(productId);
-		productDoesNotExistThenThrow(product);
+		productIsNullThenThrow(product);
 		return product;
 	}
 
@@ -40,6 +40,7 @@ public class ProductBusiness implements ProductBusinessContract {
 	@Override
 	public Product update(ProductUpdate productUpdate) {
 		productIdDoesNotExistThenThrow(productUpdate.getId());
+		productIdExistsAndDifferentVersionThenThrow(productUpdate.getId(), productUpdate.getVersion());
 		Product product = productRepository.update(productUpdate);
 		return product;
 	}
@@ -50,21 +51,31 @@ public class ProductBusiness implements ProductBusinessContract {
 		productRepository.delete(product);
 	}
 
-	private void productDoesNotExistThenThrow(Product product) {
+	private void productIsNullThenThrow(Product product) {
 		if (Objects.isNull(product)) {
-			throw ValidationStatus.PRODUCT_DOES_NOT_EXIST._throw();
+			ValidationStatus.PRODUCT_DOES_NOT_EXIST._throw();
 		}
 	}
 
 	private void productIdExistsThenThrow(Long productId) {
 		if (productRepository.exist(productId)) {
-			throw ValidationStatus.PRODUCT_ID_ALREADY_EXIST._throw();
+			ValidationStatus.PRODUCT_ID_ALREADY_EXIST._throw();
 		}
 	}
 
 	private void productIdDoesNotExistThenThrow(Long productId) {
 		if (!productRepository.exist(productId)) {
-			throw ValidationStatus.PRODUCT_ID_DOES_NOT_EXIST._throw();
+			ValidationStatus.PRODUCT_ID_DOES_NOT_EXIST._throw();
+		}
+	}
+	
+	private void productIdExistsAndDifferentVersionThenThrow(Long productId, Long version) {
+		Product product = productRepository.findById(productId);
+		if (product == null) {
+			ValidationStatus.PRODUCT_ID_DOES_NOT_EXIST._throw();
+		}
+		if (!version.equals(product.getVersion())) {
+			ValidationStatus.ENTITY_VERSION_MISMATCH._throw();
 		}
 	}
 	

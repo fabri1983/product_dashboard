@@ -13,9 +13,13 @@ import org.mapstruct.Mapper;
 public interface ProductMapperForViewModel {
 
 	Product toModel(ProductView productView);
+	
 	Product toModel(ProductCreateView productCreateView);
+	
 	ProductUpdate toModel(ProductUpdateView productUpdateView);
-    ProductView toView(Product product);
-    List<ProductView> toView(List<Product> products);
+    
+	ProductView toView(Product product);
+    
+	List<ProductView> toView(List<Product> products);
     
 }

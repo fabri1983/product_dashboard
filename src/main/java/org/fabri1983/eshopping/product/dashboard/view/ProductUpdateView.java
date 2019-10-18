@@ -2,9 +2,8 @@ package org.fabri1983.eshopping.product.dashboard.view;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ProductUpdateView {
+public class ProductUpdateView extends BaseView {
 
-	private Long id;
 	@JsonProperty("retail_price")
 	private Double retailPrice;
 	@JsonProperty("discounted_price")
@@ -13,14 +12,6 @@ public class ProductUpdateView {
 	private Boolean availability;
 	
 	public ProductUpdateView() {
-	}
-	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 	
 	public Double getRetailPrice() {
