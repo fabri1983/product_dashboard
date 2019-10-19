@@ -35,7 +35,7 @@
 		<junit.bom.version>5.5.2</junit.bom.version>
 		<junit.jupiter.version>5.5.2</junit.jupiter.version>
 		<junit.platform.version>1.5.2</junit.platform.version>
-  		<dependency.check.maven.version>5.2.2</dependency.check.maven.version>
+		<dependency.check.maven.version>5.2.2</dependency.check.maven.version>
     </properties>
 
 	<profiles>
