@@ -35,6 +35,7 @@
 		<junit.bom.version>5.5.2</junit.bom.version>
 		<junit.jupiter.version>5.5.2</junit.jupiter.version>
 		<junit.platform.version>1.5.2</junit.platform.version>
+  		<dependency.check.maven.version>5.2.2</dependency.check.maven.version>
     </properties>
 
 	<profiles>
@@ -52,6 +53,39 @@
 			<properties>
 				<spring.profiles.active>repository-in-memory</spring.profiles.active>
 			</properties>
+		</profile>
+		<!-- OWASP security checker for project dependencies -->
+		<profile>
+			<id>securitycheck</id>
+			<dependencies>
+				<!-- OWASP dependency checker -->
+				<dependency>
+					<groupId>org.owasp</groupId>
+					<artifactId>dependency-check-maven</artifactId>
+					<version>${dependency.check.maven.version}</version>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.owasp</groupId>
+						<artifactId>dependency-check-maven</artifactId>
+						<version>${dependency.check.maven.version}</version>
+						<configuration>
+							<suppressionFiles>
+								<!--suppressionFile>suppressed.xml</suppressionFile-->
+							</suppressionFiles>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>check</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 	
@@ -156,7 +190,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <type>jar</type>
 			<exclusions>
 				<exclusion>
 					<groupId>junit</groupId>
@@ -173,6 +206,7 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- This is needed to avoid missing libraries error when running JUnit5 tests -->
 			<dependency>
 				<groupId>org.junit</groupId>
 				<artifactId>junit-bom</artifactId>

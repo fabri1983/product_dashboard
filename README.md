@@ -135,3 +135,11 @@ This project uses **MapStruct Bean Mapper**. So you need to install a plugin in 
 Install Eclipse plugin: *m2e-apt*.  
 Edit your pom.xml by adding inside `<properties>` tag: `<m2e.apt.activation>jdt_apt</m2e.apt.activation>`  
 See http://mapstruct.org/documentation/ide-support/.  
+
+
+## OWASP Dependency Checker
+Run next command to check if any dependency has a security risk according the Maven plugin *dependency-checker* from **OWASP**:  
+```sh
+mvn verify -P securitycheck
+```
+
