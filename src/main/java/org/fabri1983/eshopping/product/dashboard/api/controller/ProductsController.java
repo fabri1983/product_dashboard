@@ -70,7 +70,7 @@ public class ProductsController extends BaseController {
 			value = "",
 			method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	@PreAuthorize(AUTH_ADMIN)
+	@PreAuthorize(AUTH_ADMIN_OR_STANDARD)
 	public ResponseEntity<ProductView> add(
 			@RequestBody @NotNull ProductCreateView productCreateView) {
 		
@@ -84,7 +84,7 @@ public class ProductsController extends BaseController {
 			value = "/{product_id}", 
 			method = RequestMethod.PUT,
 			consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	@PreAuthorize(AUTH_ADMIN)
+	@PreAuthorize(AUTH_ADMIN_OR_STANDARD)
 	public ResponseEntity<ProductView> update(
 			@PathVariable("product_id") @NotNull Long productId, 
 			@RequestBody @NotNull ProductUpdateView productUpdateView) {
@@ -99,7 +99,7 @@ public class ProductsController extends BaseController {
 	@RequestMapping(
 			value = "/{product_id}",
 			method = RequestMethod.DELETE)
-	@PreAuthorize(AUTH_ADMIN)
+	@PreAuthorize(AUTH_ADMIN_OR_STANDARD)
 	public ResponseEntity<?> delete(
 			@PathVariable("product_id") @NotNull Long productId) {
 		

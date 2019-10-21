@@ -61,8 +61,8 @@ public class ProductsControllerTest {
     @Value("${security.jwt.grant-type}")
     private String grantType;
     
-    private String adminUsername = "super.admin";
-    private String adminPass = "passw0rd$1";
+    private String adminUsername = "jane.diaz";
+    private String adminPass = "abc123456";
     private String accessToken;
     
     @BeforeEach
@@ -104,14 +104,16 @@ public class ProductsControllerTest {
 	}
 
 	@Test
+	@Disabled
 	@DisplayName("When GET /products. Then CORS headers match.")
 	@Order(-1)
-	@Disabled
 	public void givenARequest_whenResponse_thenCORSheadersMatch() throws Exception {
 		mockMvc
 			.perform(
 				get("/products")
 					.with(httpBearer(accessToken))
+					.header(HttpHeaders.ORIGIN, "localhost")
+					.header(HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD, "GET")
 			)
 			.andExpect(header().string(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*"))
 			.andExpect(header().string(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, "POST, GET, PUT, OPTIONS, DELETE"))

@@ -1,5 +1,7 @@
 package org.fabri1983.eshopping.product.dashboard.api.configuration;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +21,10 @@ import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @EnableWebSecurity
@@ -66,6 +72,24 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.cors();
 	}
 
+	@Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowedMethods(Arrays.asList(
+        		RequestMethod.POST.name(), 
+        		RequestMethod.GET.name(), 
+        		RequestMethod.PUT.name(), 
+        		RequestMethod.DELETE.name(), 
+        		RequestMethod.OPTIONS.name()));
+        config.setAllowedOrigins(Arrays.asList("*"));
+        config.setAllowedHeaders(Arrays.asList("*"));
+        config.setAllowCredentials(true);
+        config.setMaxAge(3600L);;
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", config);
+        return source;
+    }
+	
 	@Bean
 	public JwtAccessTokenConverter accessTokenConverter() {
 		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
