@@ -1,43 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.fabri1983.eshopping.product.dashboard</groupId>
-    <artifactId>product-dashboard</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+	<groupId>org.fabri1983.eshopping.product.dashboard</groupId>
+	<artifactId>product-dashboard</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.9.RELEASE</version>
 	</parent>
-	
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version> <!-- Spring Boot only -->
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        
-		<!-- Eclipse IDE: automatically run annotation processors within the incremental compilation -->
-  		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
-        
-        <!-- default spring profile. Do not change/remove this line. Used by declared maven profiles in this pom.xml -->
-        <spring.profiles.active>default</spring.profiles.active>
-  		
-        <mapstruct.version>1.3.0.Final</mapstruct.version>
-  		<spring.security.jwt.version>1.0.10.RELEASE</spring.security.jwt.version>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version> <!-- Spring Boot only -->
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<!-- Eclipse IDE: automatically run annotation processors within the incremental 
+			compilation -->
+		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
+
+		<!-- default spring profile. Do not change/remove this line. Used by declared 
+			maven profiles in this pom.xml -->
+		<spring.profiles.active>default</spring.profiles.active>
+
+		<mapstruct.version>1.3.0.Final</mapstruct.version>
+		<spring.security.jwt.version>1.0.10.RELEASE</spring.security.jwt.version>
 		<spring.security-oauth2.version>2.3.6.RELEASE</spring.security-oauth2.version>
 		<hibernate.jpa.api.version>1.0.2.Final</hibernate.jpa.api.version>
 		<junit.bom.version>5.5.2</junit.bom.version>
 		<junit.jupiter.version>5.5.2</junit.jupiter.version>
 		<junit.platform.version>1.5.2</junit.platform.version>
 		<dependency.check.maven.version>5.2.2</dependency.check.maven.version>
-    </properties>
+	</properties>
 
 	<profiles>
 		<profile>
@@ -74,7 +76,7 @@
 						<version>${dependency.check.maven.version}</version>
 						<configuration>
 							<suppressionFiles>
-								<!--suppressionFile>suppressed.xml</suppressionFile-->
+								<!--suppressionFile>suppressed.xml</suppressionFile -->
 							</suppressionFiles>
 						</configuration>
 						<executions>
@@ -89,8 +91,8 @@
 			</build>
 		</profile>
 	</profiles>
-	
-    <dependencies>
+
+	<dependencies>
 
 		<!-- MapStruct: Java Bean Mapper -->
 		<dependency>
@@ -126,16 +128,26 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
 
 		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>        
-        <dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-jwt</artifactId>
 			<version>${spring.security.jwt.version}</version>
@@ -146,23 +158,23 @@
 			<version>${spring.security-oauth2.version}</version>
 		</dependency>
 
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.1-api</artifactId>
-            <version>${hibernate.jpa.api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<version>${hibernate.jpa.api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -176,34 +188,29 @@
 			<version>${junit.jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-launcher</artifactId>
-            <version>${junit.platform.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-launcher</artifactId>
+			<version>${junit.platform.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
 			<exclusions>
 				<exclusion>
 					<groupId>junit</groupId>
 					<artifactId>junit</artifactId>
 				</exclusion>
 			</exclusions>
-        </dependency>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-    </dependencies>
+	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>
@@ -217,10 +224,10 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-    
-    <build>
-    	<plugins>
-    		<plugin>
+
+	<build>
+		<plugins>
+			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
@@ -250,7 +257,8 @@
 				<version>4.3.0</version>
 				<configuration>
 					<timestampFormat>EpochMillis</timestampFormat>
-					<!-- token provided by -D argument on .travis.yml from environment variable set up on Travis CI account -->
+					<!-- token provided by -D argument on .travis.yml from environment variable 
+						set up on Travis CI account -->
 					<repoToken></repoToken>
 				</configuration>
 			</plugin>
@@ -274,6 +282,6 @@
 					</execution>
 				</executions>
 			</plugin>
-    	</plugins>
-    </build>
+		</plugins>
+	</build>
 </project>
