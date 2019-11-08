@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS role_auth (
   id           BIGINT(20)   NOT NULL AUTO_INCREMENT,
   version      BIGINT(20)   NOT NULL,
   createdOn    DATETIME     NOT NULL,
-  modifiedAt   DATETIME     NOT NULL,
+  modifiedOn   DATETIME     NOT NULL,
   description  VARCHAR(255) DEFAULT NULL,
   roleName     VARCHAR(128) DEFAULT NULL,
   PRIMARY KEY (id)
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS user_auth (
   id          BIGINT(20)   NOT NULL AUTO_INCREMENT,
   version     BIGINT(20)   NOT NULL,
   createdOn   DATETIME     NOT NULL,
-  modifiedAt  DATETIME     NOT NULL,
+  modifiedOn  DATETIME     NOT NULL,
   firstName   VARCHAR(128) NOT NULL,
   lastName    VARCHAR(128) NOT NULL,
   password    VARCHAR(128) NOT NULL,

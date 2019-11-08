@@ -82,12 +82,12 @@ public class ProductInMemoryRepository implements ProductRepositoryContract {
 	private void prePersist(ProductEntity productEntity) {
 		LocalDateTime now = now();
 		productEntity.setCreatedOn(now);
-		productEntity.setModifiedAt(now);
+		productEntity.setModifiedOn(now);
 	}
 
 	private void preUpdate(ProductEntity productEntity) {
 		LocalDateTime now = now();
-		productEntity.setModifiedAt(now);
+		productEntity.setModifiedOn(now);
 	}
 
 	private void validateEntityIsValidOrThrow(ProductEntity entity) {

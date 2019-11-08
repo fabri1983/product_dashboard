@@ -37,14 +37,14 @@ public abstract class BaseEntityAutoIncrement implements Serializable, IFunction
 			updatable = false)
 	protected LocalDateTime createdOn;
 
-	@Column(name = "modifiedAt", nullable = false)
-	protected LocalDateTime modifiedAt;
+	@Column(name = "modifiedOn", nullable = false)
+	protected LocalDateTime modifiedOn;
 
 	@PrePersist
 	protected void prePersist() {
 		LocalDateTime now = now();
 		createdOn = now;
-		modifiedAt = now;
+		modifiedOn = now;
 		if (version == null) {
     		version = Long.valueOf(1);
 		}
@@ -52,7 +52,7 @@ public abstract class BaseEntityAutoIncrement implements Serializable, IFunction
 
 	@PreUpdate
 	protected void preUpdate() {
-		modifiedAt = now();
+		modifiedOn = now();
 		if (version == null) {
     		version = Long.valueOf(1);
     	} else {
@@ -84,17 +84,17 @@ public abstract class BaseEntityAutoIncrement implements Serializable, IFunction
 		this.createdOn = createdOn;
 	}
 
-	public LocalDateTime getModifiedAt() {
-		return modifiedAt;
+	public LocalDateTime getModifiedOn() {
+		return modifiedOn;
 	}
 
-	public void setModifiedAt(LocalDateTime modifiedAt) {
-		this.modifiedAt = modifiedAt;
+	public void setModifiedOn(LocalDateTime modifiedOn) {
+		this.modifiedOn = modifiedOn;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(createdOn, id, modifiedAt, version);
+		return Objects.hash(createdOn, id, modifiedOn, version);
 	}
 
 	@Override
@@ -107,7 +107,7 @@ public abstract class BaseEntityAutoIncrement implements Serializable, IFunction
 			return false;
 		BaseEntityAutoIncrement other = (BaseEntityAutoIncrement) obj;
 		return Objects.equals(createdOn, other.createdOn) && Objects.equals(id, other.id)
-				&& Objects.equals(modifiedAt, other.modifiedAt) && Objects.equals(version, other.version);
+				&& Objects.equals(modifiedOn, other.modifiedOn) && Objects.equals(version, other.version);
 	}
 
 }
