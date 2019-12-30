@@ -7,7 +7,7 @@
 [![Code Climate](https://codeclimate.com/github/fabri1983/product_dashboard/badges/gpa.svg)](https://codeclimate.com/github/fabri1983/product_dashboard)
 
 
-This project uses JPA, Spring Profiles, and Spring Security with OAuth2 for JWT authorization strategy when accessing web endpoints.  
+This project uses Java 11, JPA, Spring Profiles, and Spring Security with OAuth2 for JWT authorization strategy when accessing web endpoints.  
 See related sections at the end of this document.  
 The project depends on Maven 3.6.x. You can use `mvnw` if you don't have Maven installed in your host.
 

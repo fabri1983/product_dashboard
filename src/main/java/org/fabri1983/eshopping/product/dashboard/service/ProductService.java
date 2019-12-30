@@ -31,7 +31,7 @@ public class ProductService implements ProductServiceContract {
 	public List<ProductView> findAll(ProductFilterParametersView filterParametersView) {
 		ProductFilterParameters filterParameters = filterParamatersMapper.toModel(filterParametersView);
 		List<Product> products = productBusiness.findAll(filterParameters);
-		List<ProductView> productViews = productMapper.toView(products);
+		List<ProductView> productViews = productMapper.toViewList(products);
 		return productViews;
 	}
 

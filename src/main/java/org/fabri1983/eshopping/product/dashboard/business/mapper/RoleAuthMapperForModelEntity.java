@@ -11,10 +11,10 @@ public interface RoleAuthMapperForModelEntity {
 
 	RoleAuth toModel(RoleAuthEntity roleAuthEntity);
 	
-	List<RoleAuth> toModel(List<RoleAuthEntity> roleAuthEntities);
+	List<RoleAuth> toModelList(List<RoleAuthEntity> roleAuthEntities);
 	
 	RoleAuthEntity toEntity(RoleAuth roleAuth);
     
-	List<RoleAuthEntity> toEntity(List<RoleAuth> roleAuths);
+	List<RoleAuthEntity> toEntityList(List<RoleAuth> roleAuths);
 	
 }

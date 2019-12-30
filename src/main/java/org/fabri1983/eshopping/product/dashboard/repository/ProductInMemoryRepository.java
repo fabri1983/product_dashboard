@@ -39,7 +39,7 @@ public class ProductInMemoryRepository implements ProductRepositoryContract {
 		ProductEntitySorter sorter = ProductEntitySorter.from(filterParameters);
 		List<ProductEntity> sortedEntities = sorter.sort(filteredEntities);
 		
-		return productMapper.toModel(sortedEntities);
+		return productMapper.toModelList(sortedEntities);
 	}
 
 	@Override

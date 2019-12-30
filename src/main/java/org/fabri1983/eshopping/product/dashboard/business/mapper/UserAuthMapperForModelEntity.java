@@ -11,10 +11,10 @@ public interface UserAuthMapperForModelEntity {
 
 	UserAuth toModel(UserAuthEntity userAuthEntity);
 	
-	List<UserAuth> toModel(List<UserAuthEntity> userAuthEntities);
+	List<UserAuth> toModelList(List<UserAuthEntity> userAuthEntities);
 	
 	UserAuthEntity toEntity(UserAuth userAuth);
     
-	List<UserAuthEntity> toEntity(List<UserAuth> userAuths);
+	List<UserAuthEntity> toEntityList(List<UserAuth> userAuths);
 	
 }

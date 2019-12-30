@@ -50,7 +50,7 @@ public class ProductJpaRepository implements ProductRepositoryContract {
 //					Sort.by(Order.desc("discountedPercentage"), Order.asc("discountedPrice"), Order.asc("id")));
 		}
 		
-		return productMapper.toModel(entities);
+		return productMapper.toModelList(entities);
 	}
 
 	@Override

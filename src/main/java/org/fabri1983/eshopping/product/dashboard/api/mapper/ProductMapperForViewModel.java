@@ -20,6 +20,6 @@ public interface ProductMapperForViewModel {
     
 	ProductView toView(Product product);
     
-	List<ProductView> toView(List<Product> products);
+	List<ProductView> toViewList(List<Product> products);
     
 }

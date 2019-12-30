@@ -11,10 +11,10 @@ public interface ProductMapperForModelEntity {
 
 	Product toModel(ProductEntity productEntity);
 	
-	List<Product> toModel(List<ProductEntity> productEntities);
+	List<Product> toModelList(List<ProductEntity> productEntities);
 	
 	ProductEntity toEntity(Product product);
     
-	List<ProductEntity> toEntity(List<Product> products);
+	List<ProductEntity> toEntityList(List<Product> products);
 	
 }

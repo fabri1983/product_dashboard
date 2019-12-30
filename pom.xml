@@ -19,9 +19,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version> <!-- Spring Boot only -->
+		<java.version>11</java.version> <!-- Spring Boot only -->
 		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.target>11</maven.compiler.target>
 
 		<!-- Eclipse IDE: automatically run annotation processors within the incremental 
 			compilation -->
