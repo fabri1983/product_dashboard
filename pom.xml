@@ -23,15 +23,14 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 
-		<!-- Eclipse IDE: automatically run annotation processors within the incremental 
-			compilation -->
+		<!-- Eclipse IDE: automatically run annotation processors within the incremental compilation -->
 		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
 
 		<!-- default spring profile. Do not change/remove this line. Used by declared 
 			maven profiles in this pom.xml -->
 		<spring.profiles.active>default</spring.profiles.active>
 
-		<mapstruct.version>1.3.0.Final</mapstruct.version>
+		<mapstruct.version>1.3.1.Final</mapstruct.version>
 		<spring.security.jwt.version>1.0.10.RELEASE</spring.security.jwt.version>
 		<spring.security-oauth2.version>2.3.6.RELEASE</spring.security-oauth2.version>
 		<hibernate.jpa.api.version>1.0.2.Final</hibernate.jpa.api.version>
@@ -179,19 +178,16 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>${junit.jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit.jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.platform</groupId>
 			<artifactId>junit-platform-launcher</artifactId>
-			<version>${junit.platform.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -238,6 +234,7 @@
 					<source>${maven.compiler.source}</source>
 					<target>${maven.compiler.target}</target>
 					<parameters>true</parameters>
+					<!-- MapStruct generation of concrete classes -->
 					<annotationProcessorPaths>
 						<path>
 							<groupId>org.mapstruct</groupId>
@@ -268,8 +265,7 @@
 				<version>4.3.0</version>
 				<configuration>
 					<timestampFormat>EpochMillis</timestampFormat>
-					<!-- token provided by -D argument on .travis.yml from environment variable 
-						set up on Travis CI account -->
+					<!-- token provided by -D argument on .travis.yml from environment variable set up on Travis CI account -->
 					<repoToken></repoToken>
 				</configuration>
 			</plugin>
