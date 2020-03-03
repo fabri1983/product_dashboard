@@ -40,9 +40,6 @@
 	<profiles>
 		<profile>
 			<id>java8</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 			<properties>
 				<maven.compiler.source>1.8</maven.compiler.source>
 				<maven.compiler.target>8</maven.compiler.target>
@@ -51,9 +48,13 @@
 		</profile>
 		<profile>
 			<id>java11</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<properties>
 				<maven.compiler.source>1.8</maven.compiler.source>
 				<maven.compiler.target>11</maven.compiler.target>
+				<maven.compiler.release>11</maven.compiler.release>
 				<java.version>11</java.version> <!-- Spring Boot only -->
 			</properties>
 		</profile>

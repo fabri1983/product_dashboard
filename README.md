@@ -1,4 +1,4 @@
-# Product Dashboard - Spring Boot REST API, OAuth2 JWT, JUnit5
+# Product Dashboard - Spring Boot REST API, OAuth2 JWT, JPA, JUnit5
 
 [![Build Status](https://travis-ci.org/fabri1983/product_dashboard.svg?branch=master)](https://travis-ci.org/fabri1983/product_dashboard?branch=master)
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -7,7 +7,7 @@
 [![Code Climate](https://codeclimate.com/github/fabri1983/product_dashboard/badges/gpa.svg)](https://codeclimate.com/github/fabri1983/product_dashboard)
 
 
-This a Java 8 and 11 project uing JPA, Spring Profiles, and Spring Security with OAuth2 for JWT authorization strategy when accessing web endpoints.  
+This a Java 8 and 11 project using JPA, Spring Profiles, and Spring Security with OAuth2 for JWT authorization strategy when accessing web endpoints.  
 See related sections at the end of this document.  
 The project depends on Maven 3.6.x. You can use `mvnw` if you don't have Maven installed in your host.
 
