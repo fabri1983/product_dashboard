@@ -19,9 +19,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>11</java.version> <!-- Spring Boot only -->
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
 
 		<!-- Eclipse IDE: automatically run annotation processors within the incremental compilation -->
 		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
@@ -41,6 +38,25 @@
 	</properties>
 
 	<profiles>
+		<profile>
+			<id>java8</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<maven.compiler.source>1.8</maven.compiler.source>
+				<maven.compiler.target>8</maven.compiler.target>
+				<java.version>8</java.version> <!-- Spring Boot only -->
+			</properties>
+		</profile>
+		<profile>
+			<id>java11</id>
+			<properties>
+				<maven.compiler.source>1.8</maven.compiler.source>
+				<maven.compiler.target>11</maven.compiler.target>
+				<java.version>11</java.version> <!-- Spring Boot only -->
+			</properties>
+		</profile>
 		<profile>
 			<id>repository-jpa</id>
 			<activation>
